@@ -1,0 +1,840 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+
+
+
+
+  <meta name="keywords" content="排序," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+
+  <title> 排序 // Hexo </title>
+</head>
+
+<body>
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">Hexo</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          首页
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          归档
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          标签
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              排序
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-04-12
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h1 id="插入排序">插入排序</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span><span class="params">(a)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> len = a.length,</span><br><span class="line">        i, j, tmp;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; len; i += <span class="number">1</span>) &#123;</span><br><span class="line">        tmp = a[i];</span><br><span class="line">        <span class="keyword">for</span> (j = i; j &gt;= <span class="number">0</span>; j -= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="comment">// tmp不能替换为a[j]，此处与一个固定值比较，</span></span><br><span class="line">            <span class="comment">// 而a[j]在循环中改变值</span></span><br><span class="line">            <span class="keyword">if</span> (a[j - <span class="number">1</span>] &gt; tmp) &#123;</span><br><span class="line">                a[j] = a[j - <span class="number">1</span>];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">// 前面都是排好序的，需直接退出循环</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        a[j] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = [<span class="number">0</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">sort(a);</span><br></pre></td></tr></table></figure>
+<h1 id="快速排序">快速排序</h1><h2 id="1-选取枢纽元">1.选取枢纽元</h2><h3 id="一种错误的方法">一种错误的方法</h3><p>通常的，没有经过充分考虑的选择是将第一个元素用作枢纽元。<br>如果输入时随机的，那么这是可以接受的，但是如果输入的是预排序的或是反序的，那么这样的枢纽元就产生一个劣质的分割，因为所有的元素都被划分都枢纽元的一边。更有甚者，这种情况可能发生在所有的递归调用中。</p>
+<h3 id="一种安全的做法">一种安全的做法</h3><p>一种安全的方针是随机选取枢纽元。但随机数生成一般是昂贵的，根本减少不了算法其余部分的平均运行时间。</p>
+<h3 id="三数中值分割法">三数中值分割法</h3><p>一般的做法是使用左端、右端和中心位置上的三个元素的中值作为枢纽元。</p>
+<h2 id="2-分割策略">2.分割策略</h2><p>有几种分割策略用于实践，但此处描述的分割方法能够给出安全的好的结果。</p>
+<p>将枢纽元与最后的元素交换使得枢纽元离开要被分割的数据段。i从第一个元素开始而j从倒数第二个元素开始。在分割阶段要做的就是把所有小元素移到数组的左边而把所有大元素移到数组的右边。当然，小和大都是相对于枢纽元素而言的。</p>
+<p>当i在j的左边时，我们将i右移，移过那些小于枢纽元的元素，并将j左移，移过那些大于枢纽元的元素。当i和j停止时，i指向一个大元素而j指向一个小元素。如果i在j的左边，那么将这两个元素互换，其效果是把一个大元素移向右边而把一个小元素移向左边。注意，当i和j已经交错时，不再交换。分割的最后一步是将枢纽元与i所指向的元素进行交换。因为分割结束的条件是i找到一个比pivot大的元素，且i、j已经交错，故将i与pivot指向的元素交换使得枢纽元素出于一个“中间”位置。</p>
+<p>到目前为止，我们都是假设所有元素互异，那么出现重复元素时该怎么办？问题的核心是怎么处理那些等于枢纽元素的关键字。我们的处理方式是，如果i和j遇到等于枢纽元的关键字，那么我们就让i和j都停止（然后执行交换）。如果i和j都停止，那么在相等的元素间将有很多次的交换。虽然这似乎没有什么意义，但是其正面效果则是i和j将在中间交错，因此当枢纽元被替代时，这种分割建立了几乎相等的子数组。归并排序分析告诉我们，此时总的运行时间为O(N log N)。</p>
+<h2 id="3-小数组">3.小数组</h2><p>对于很小的数组（N &lt;= 20），快速排序不如插入排序好。因为快速排序是递归的，所以这样的情形还经常发生。</p>
+<h2 id="4-实际的快速排序例程">4.实际的快速排序例程</h2><h3 id="实现三数中值分割方法的程序">实现三数中值分割方法的程序</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">median3</span><span class="params">(a, left, right)</span> &#123;            </span></span><br><span class="line">    var <span class="keyword">center</span> = Math.<span class="built_in">floor</span>((<span class="keyword">left</span> + <span class="keyword">right</span>) / <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">a</span>[<span class="keyword">left</span>] &gt; <span class="keyword">a</span>[<span class="keyword">center</span>])</span><br><span class="line">        swap(<span class="keyword">a</span>, <span class="keyword">left</span>, <span class="keyword">center</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">a</span>[<span class="keyword">left</span>] &gt; <span class="keyword">a</span>[<span class="keyword">right</span>])</span><br><span class="line">        swap(<span class="keyword">a</span>, <span class="keyword">left</span>, <span class="keyword">right</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">a</span>[<span class="keyword">center</span>] &gt; <span class="keyword">a</span>[<span class="keyword">right</span>])</span><br><span class="line">        swap(<span class="keyword">a</span>, <span class="keyword">center</span>, <span class="keyword">right</span>);</span><br><span class="line"></span><br><span class="line">    swap(<span class="keyword">a</span>, <span class="keyword">center</span>, <span class="keyword">right</span> - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">a</span>[<span class="keyword">right</span> - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">swap</span><span class="params">(a, x, y)</span> &#123;</span></span><br><span class="line">    var temp;</span><br><span class="line">    temp = <span class="keyword">a</span>[<span class="keyword">x</span>];</span><br><span class="line">    <span class="keyword">a</span>[<span class="keyword">x</span>] = <span class="keyword">a</span>[<span class="keyword">y</span>];</span><br><span class="line">    <span class="keyword">a</span>[<span class="keyword">y</span>] = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>选取枢纽元最容易的方法是对a[left]、a[right]、a[center]适当地排序。<br>这种做法还有额外的好处，即该三元素中的最小者被分在a[left]，而这正是分割阶段应该将它放到的位置。三个元素中的最大者被分在a[right]，这也是正确的位置，因为它大于枢纽元。 <em>因此我们可以把枢纽元放到a[right - 1]并在分割阶段将i和j初始化到left + 1和right - 2。</em> 因为a[left]比枢纽元小，所以将它用作j的境界标记，这是另一个好处。因此我们不必担心j越界。由于i将停在那些等于枢纽元的关键字处，故将枢纽元存储在a[right - 1]，将提供一个境界标记。</p>
+<h3 id="快速排序的主例程">快速排序的主例程</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function <span class="type">Qsort</span>(a, <span class="keyword">left</span>, <span class="keyword">right</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">left</span> + <span class="number">3</span> &lt;= <span class="keyword">right</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> pivot = median3(a, <span class="keyword">left</span>, <span class="keyword">right</span>),</span><br><span class="line">            i = <span class="keyword">left</span>,</span><br><span class="line">            j = <span class="keyword">right</span> - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">            <span class="keyword">while</span> (a[++i] &lt; pivot) &#123;&#125;</span><br><span class="line">            <span class="keyword">while</span> (a[--j] &gt; pivot) &#123;&#125;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; j) &#123;</span><br><span class="line">                <span class="built_in">swap</span>(a, i, j);</span><br><span class="line">            &#125; <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">swap</span>(a, i, <span class="keyword">right</span> - <span class="number">1</span>);</span><br><span class="line">        <span class="type">Qsort</span>(a, <span class="keyword">left</span>, i - <span class="number">1</span>);</span><br><span class="line">        <span class="type">Qsort</span>(a, i + <span class="number">1</span>, <span class="keyword">right</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">insertionSort</span>(a, <span class="keyword">left</span>, <span class="keyword">right</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是快速排序真正的核心。<br>4、5行将i和j初始化为比它们正确值超出1，使得不存在需要考虑的特殊情况。 <em>此处的初始化依赖于三数中值分割法有一些附加作用的事实。</em> </p>
+<p>令人感兴趣的是如果用下列代码2替代上述对应部分代码1将不能正常运行，因为若a[i] = a[i] = a[pivot]将产生一个无限循环。<br><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var pivot = media<span class="label">n3</span><span class="comment">(a, left, right)</span>,</span><br><span class="line">    i = left + <span class="number">1</span>,</span><br><span class="line">    j = right - <span class="number">2</span>;</span><br><span class="line">for <span class="comment">(;;)</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> <span class="comment">(a[i] &lt; pivot)</span> &#123;i += <span class="number">1</span>;&#125;</span><br><span class="line">    <span class="keyword">while</span> <span class="comment">(a[j] &gt; pivot)</span> &#123;j -= <span class="number">1</span>;&#125;</span><br><span class="line">    <span class="keyword">if</span> <span class="comment">(i &lt; j)</span> &#123;</span><br><span class="line">        swap<span class="comment">(a, i, j)</span>;</span><br><span class="line">    &#125; else</span><br><span class="line">        break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代码2碰上a[i] = a[pivot]时，循环条件不满足，后续语句不能执行，i值没有增加，同样j值也没有增加。此时a[i] = a[i] = a[pivot]，语句swap(a, i, j);执行后不能改变任何状况，然后就死循环了。</p>
+<p>而代码1中，i本应该初始化为left + 1， 但由于a[++i]，使得i值其实还是以left + 1开始执行。而且++i还有一个好处，即便a[i] = a[pivot]使得循环停止，但下次循环时i值先行加1，于是循环可继续执行而不会停留在同一i值而进入死循环。</p>
+<h3 id="插入排序-1">插入排序</h3><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertionSort</span><span class="params">(a, left, right)</span> <span class="comment">&#123;</span><br><span class="line">    var i, j, tmp;</span><br><span class="line">    for (i = left + 1; i &lt;= right; i++) &#123;</span><br><span class="line">        tmp = a[i]</span><br><span class="line">        for (j = i; j &gt;= left; j -= 1) &#123;</span><br><span class="line">            if(a[j - 1] &gt; tmp)&#123;</span><br><span class="line">                a[j] = a[j - 1];</span><br><span class="line">            &#125;</span><span class="title">else</span><span class="comment">&#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title">a</span>[<span class="title">j</span>] = <span class="title">tmp</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-整合代码">5.整合代码</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">function <span class="built_in">swap</span>(a, x, y) &#123;</span><br><span class="line">    <span class="keyword">var</span> temp;</span><br><span class="line">    temp = a[x];</span><br><span class="line">    a[x] = a[y];</span><br><span class="line">    a[y] = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function <span class="built_in">quickSort</span>(a) &#123;</span><br><span class="line">    <span class="keyword">var</span> n = a.length;</span><br><span class="line">    <span class="type">Qsort</span>(a, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function median3(a, <span class="keyword">left</span>, <span class="keyword">right</span>) &#123;            </span><br><span class="line">    <span class="keyword">var</span> center = <span class="type">Math</span>.floor((<span class="keyword">left</span> + <span class="keyword">right</span>) / <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (a[<span class="keyword">left</span>] &gt; a[center])</span><br><span class="line">        <span class="built_in">swap</span>(a, <span class="keyword">left</span>, center);</span><br><span class="line">    <span class="keyword">if</span> (a[<span class="keyword">left</span>] &gt; a[<span class="keyword">right</span>])</span><br><span class="line">        <span class="built_in">swap</span>(a, <span class="keyword">left</span>, <span class="keyword">right</span>);</span><br><span class="line">    <span class="keyword">if</span> (a[center] &gt; a[<span class="keyword">right</span>])</span><br><span class="line">        <span class="built_in">swap</span>(a, center, <span class="keyword">right</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">swap</span>(a, center, <span class="keyword">right</span> - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> a[<span class="keyword">right</span> - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function <span class="type">Qsort</span>(a, <span class="keyword">left</span>, <span class="keyword">right</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">left</span> + <span class="number">3</span> &lt;= <span class="keyword">right</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> pivot = median3(a, <span class="keyword">left</span>, <span class="keyword">right</span>),</span><br><span class="line">            i = <span class="keyword">left</span>,</span><br><span class="line">            j = <span class="keyword">right</span> - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">            <span class="keyword">while</span> (a[++i] &lt; pivot) &#123;&#125;</span><br><span class="line">            <span class="keyword">while</span> (a[--j] &gt; pivot) &#123;&#125;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; j) &#123;</span><br><span class="line">                <span class="built_in">swap</span>(a, i, j);</span><br><span class="line">            &#125; <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">swap</span>(a, i, <span class="keyword">right</span> - <span class="number">1</span>);</span><br><span class="line">        <span class="type">Qsort</span>(a, <span class="keyword">left</span>, i - <span class="number">1</span>);</span><br><span class="line">        <span class="type">Qsort</span>(a, i + <span class="number">1</span>, <span class="keyword">right</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">insertionSort</span>(a, <span class="keyword">left</span>, <span class="keyword">right</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function <span class="built_in">insertionSort</span>(a, <span class="keyword">left</span>, <span class="keyword">right</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> i, j, tmp;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="keyword">left</span> + <span class="number">1</span>; i &lt;= <span class="keyword">right</span>; i++) &#123;</span><br><span class="line">        tmp = a[i]</span><br><span class="line">        <span class="keyword">for</span> (j = i; j &gt;= <span class="keyword">left</span>; j -= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(a[j - <span class="number">1</span>] &gt; tmp)&#123;</span><br><span class="line">                a[j] = a[j - <span class="number">1</span>];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        a[j] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = [<span class="number">8</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">7</span>, <span class="number">0</span>];</span><br><span class="line"><span class="built_in">quickSort</span>(a);</span><br><span class="line">console.log(a);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/排序/"> #排序 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/04/13/BST/">BST</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="images/default_avatar.jpg" alt="liz" />
+          <p class="site-author-name">liz</p>
+        </div>
+        <p class="site-description motion-element"></p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/lizhengnacl" target="_blank">github</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/u/3409563520" target="_blank">weibo</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#插入排序"><span class="nav-number">1.</span> <span class="nav-text">插入排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#快速排序"><span class="nav-number">2.</span> <span class="nav-text">快速排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-选取枢纽元"><span class="nav-number">2.1.</span> <span class="nav-text">1.选取枢纽元</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一种错误的方法"><span class="nav-number">2.1.1.</span> <span class="nav-text">一种错误的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一种安全的做法"><span class="nav-number">2.1.2.</span> <span class="nav-text">一种安全的做法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三数中值分割法"><span class="nav-number">2.1.3.</span> <span class="nav-text">三数中值分割法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-分割策略"><span class="nav-number">2.2.</span> <span class="nav-text">2.分割策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-小数组"><span class="nav-number">2.3.</span> <span class="nav-text">3.小数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-实际的快速排序例程"><span class="nav-number">2.4.</span> <span class="nav-text">4.实际的快速排序例程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现三数中值分割方法的程序"><span class="nav-number">2.4.1.</span> <span class="nav-text">实现三数中值分割方法的程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速排序的主例程"><span class="nav-number">2.4.2.</span> <span class="nav-text">快速排序的主例程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入排序-1"><span class="nav-number">2.4.3.</span> <span class="nav-text">插入排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-整合代码"><span class="nav-number">2.5.</span> <span class="nav-text">5.整合代码</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">liz</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+
+  
+  
+  
+
+  
+
+
+
+
+  
+</body>
+</html>
