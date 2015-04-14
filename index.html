@@ -8,8 +8,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
-  <meta name="google-site-verification" content="VvyjvVXcJQa0QklHipu6pwm2PJGnnchIqX7s5JbbT_0" />
-
 
 
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
@@ -20,24 +18,15 @@
 
 
 
+  <meta name="keywords" content="Hexo,next" />
 
 
 
 
 
-    <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
 
 
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?50c15455e37f70aea674ff4a663eef27";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
 
 
   <title> Hexo </title>
@@ -70,7 +59,7 @@
       <li class="menu-item menu-item-home">
         <a href="/">
           <i class="menu-item-icon icon-home"></i> <br />
-          首頁
+          首页
         </a>
       </li>
     
@@ -78,7 +67,7 @@
       <li class="menu-item menu-item-archives">
         <a href="/archives">
           <i class="menu-item-icon icon-archives"></i> <br />
-          歸檔
+          归档
         </a>
       </li>
     
@@ -86,7 +75,7 @@
       <li class="menu-item menu-item-tags">
         <a href="/tags">
           <i class="menu-item-icon icon-tags"></i> <br />
-          標籤
+          标签
         </a>
       </li>
     
@@ -123,19 +112,12 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2015-04-13
+          发表于 2015-04-13
         </span>
 
         
 
         
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/04/13/BST/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/13/BST/"></span>
-            </a>
-          </span>
           
         
       </div>
@@ -153,7 +135,7 @@
 <figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">function insert(<span class="built_in">data</span>) &#123;</span><br><span class="line">    <span class="built_in">var</span> n <span class="subst">=</span> <span class="literal">new</span> Node(<span class="built_in">data</span>, <span class="built_in">null</span>, <span class="built_in">null</span>)</span><br><span class="line">    <span class="keyword">if</span> (this<span class="built_in">.</span>root <span class="subst">===</span> <span class="built_in">null</span>) &#123;</span><br><span class="line">        this<span class="built_in">.</span>root <span class="subst">=</span> n;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">var</span> cur <span class="subst">=</span> this<span class="built_in">.</span>root,</span><br><span class="line">            <span class="keyword">parent</span>;</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="keyword">parent</span> <span class="subst">=</span> cur;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">data</span> <span class="subst">&lt;</span> cur<span class="built_in">.</span><span class="built_in">data</span>) &#123;</span><br><span class="line">                cur <span class="subst">=</span> cur<span class="built_in">.</span>left;</span><br><span class="line">                <span class="keyword">if</span> (cur <span class="subst">===</span> <span class="built_in">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">parent</span><span class="built_in">.</span>left <span class="subst">=</span> n;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">data</span> <span class="subst">&gt;</span> cur<span class="built_in">.</span><span class="built_in">data</span>) &#123;</span><br><span class="line">                cur <span class="subst">=</span> cur<span class="built_in">.</span>right;</span><br><span class="line">                <span class="keyword">if</span> (cur <span class="subst">===</span> <span class="built_in">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">parent</span><span class="built_in">.</span>right <span class="subst">=</span> n;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cur<span class="built_in">.</span>num <span class="subst">+=</span> <span class="number">1</span>;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="非递归遍历">非递归遍历</h2><h3 id="中序遍历">中序遍历</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inOrder</span><span class="params">(node)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [],</span><br><span class="line">        p = node;</span><br><span class="line">    <span class="keyword">while</span> (p !== <span class="literal">null</span> || arr.length) &#123;</span><br><span class="line">        <span class="keyword">while</span> (p !== <span class="literal">null</span>) &#123;</span><br><span class="line">            arr.push(p);</span><br><span class="line">            p = p.left;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (arr.length) &#123;</span><br><span class="line">            p = arr.pop();</span><br><span class="line">            <span class="comment">// console.log(p.data);</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; p.num; i += <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(p.data);</span><br><span class="line">            &#125;</span><br><span class="line">            p = p.right;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="先序遍历">先序遍历</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">preOrder</span><span class="params">(node)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [],</span><br><span class="line">        p = node;</span><br><span class="line">    <span class="keyword">while</span> (p !== <span class="literal">null</span> || arr.length) &#123;</span><br><span class="line">        <span class="keyword">while</span> (p !== <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">// console.log(p.data);</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; p.num; i += <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(p.data);</span><br><span class="line">            &#125;</span><br><span class="line">            arr.push(p);</span><br><span class="line">            p = p.left;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (arr.length) &#123;</span><br><span class="line">            p = arr.pop();</span><br><span class="line">            p = p.right;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="后续遍历">后续遍历</h3><p>对于任一结点P，将其入栈，然后沿其左子树一直往下搜索，直到搜索到没有左孩子的结点，此时该结点出现在栈顶，但是此时不能将其出栈并访问，因此其右孩子还为被访问。所以接下来按照相同的规则对其右子树进行相同的处理，当访问完其右孩子时，该结点又出现在栈顶，此时可以将其出栈并访问。这样就保证了正确的访问顺序。可以看出，在这个过程中，每个结点都两次出现在栈顶，只有在第二次出现在栈顶时，才能访问它。因此需要多设置一个变量标识该结点是否是第一次出现在栈顶。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">postOrder</span><span class="params">(node)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [],</span><br><span class="line">        p = node,</span><br><span class="line">        tmp;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (p !== <span class="literal">null</span> || arr.length) &#123;</span><br><span class="line">        <span class="keyword">while</span> (p !== <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">// 第一次出现</span></span><br><span class="line">            p.first = <span class="literal">true</span>;</span><br><span class="line">            arr.push(p);</span><br><span class="line">            p = p.left;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (arr.length) &#123;</span><br><span class="line">            tmp = arr.pop();</span><br><span class="line">            <span class="keyword">if</span> (tmp.first === <span class="literal">true</span>) &#123;</span><br><span class="line">                第二次出现</span><br><span class="line">                tmp.first = <span class="literal">false</span>;</span><br><span class="line">                arr.push(tmp);</span><br><span class="line">                p = tmp.right;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// console.log(tmp.data);</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; tmp.num; i += <span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(tmp.data);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="后续遍历">后续遍历</h3><p>对于任一结点P，将其入栈，然后沿其左子树一直往下搜索，直到搜索到没有左孩子的结点，此时该结点出现在栈顶，但是此时不能将其出栈并访问，因此其右孩子还为被访问。所以接下来按照相同的规则对其右子树进行相同的处理，当访问完其右孩子时，该结点又出现在栈顶，此时可以将其出栈并访问。这样就保证了正确的访问顺序。可以看出，在这个过程中，每个结点都两次出现在栈顶，只有在第二次出现在栈顶时，才能访问它。因此需要多设置一个变量标识该结点是否是第一次出现在栈顶。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">postOrder</span><span class="params">(node)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [],</span><br><span class="line">        p = node,</span><br><span class="line">        tmp;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (p !== <span class="literal">null</span> || arr.length) &#123;</span><br><span class="line">        <span class="keyword">while</span> (p !== <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">// 第一次出现</span></span><br><span class="line">            p.first = <span class="literal">true</span>;</span><br><span class="line">            arr.push(p);</span><br><span class="line">            p = p.left;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (arr.length) &#123;</span><br><span class="line">            tmp = arr.pop();</span><br><span class="line">            <span class="keyword">if</span> (tmp.first === <span class="literal">true</span>) &#123;</span><br><span class="line">                <span class="comment">// 第二次出现</span></span><br><span class="line">                tmp.first = <span class="literal">false</span>;</span><br><span class="line">                arr.push(tmp);</span><br><span class="line">                p = tmp.right;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// console.log(tmp.data);</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; tmp.num; i += <span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(tmp.data);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
         
       
@@ -163,7 +145,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/二叉查找树-非递归遍历/"> #二叉查找树 非递归遍历 </a>
+            <a href="/tags/二叉树/"> #二叉树 </a>
           
         </div>
       
@@ -191,7 +173,7 @@
           
             
               <a class="post-title-link" href="/2015/04/12/排序/">
-                插入排序
+                排序
               </a>
             
           
@@ -200,19 +182,12 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2015-04-12
+          发表于 2015-04-12
         </span>
 
         
 
         
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/04/12/排序/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/12/排序/"></span>
-            </a>
-          </span>
           
         
       </div>
@@ -225,8 +200,24 @@
 
       
         
-          <h3 id="排序">排序</h3><h4 id="插入排序">插入排序</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span><span class="params">(a)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> len = a.length,</span><br><span class="line">        i, j, tmp;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; len; i += <span class="number">1</span>) &#123;</span><br><span class="line">        tmp = a[i];</span><br><span class="line">        <span class="keyword">for</span> (j = i; j &gt;= <span class="number">0</span>; j -= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="comment">// tmp不能替换为a[j]，此处与一个固定值比较，</span></span><br><span class="line">            <span class="comment">// 而a[j]在循环中改变值</span></span><br><span class="line">            <span class="keyword">if</span> (a[j - <span class="number">1</span>] &gt; tmp) &#123;</span><br><span class="line">                a[j] = a[j - <span class="number">1</span>];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">// 前面都是排好序的，需直接退出循环</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        a[j] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = [<span class="number">0</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">sort(a);</span><br></pre></td></tr></table></figure>
-
+          <h1 id="插入排序">插入排序</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span><span class="params">(a)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> len = a.length,</span><br><span class="line">        i, j, tmp;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; len; i += <span class="number">1</span>) &#123;</span><br><span class="line">        tmp = a[i];</span><br><span class="line">        <span class="keyword">for</span> (j = i; j &gt;= <span class="number">0</span>; j -= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="comment">// tmp不能替换为a[j]，此处与一个固定值比较，</span></span><br><span class="line">            <span class="comment">// 而a[j]在循环中改变值</span></span><br><span class="line">            <span class="keyword">if</span> (a[j - <span class="number">1</span>] &gt; tmp) &#123;</span><br><span class="line">                a[j] = a[j - <span class="number">1</span>];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">// 前面都是排好序的，需直接退出循环</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        a[j] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = [<span class="number">0</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">sort(a);</span><br></pre></td></tr></table></figure>
+<h1 id="快速排序">快速排序</h1><h2 id="1-选取枢纽元">1.选取枢纽元</h2><h3 id="一种错误的方法">一种错误的方法</h3><p>通常的，没有经过充分考虑的选择是将第一个元素用作枢纽元。<br>如果输入时随机的，那么这是可以接受的，但是如果输入的是预排序的或是反序的，那么这样的枢纽元就产生一个劣质的分割，因为所有的元素都被划分都枢纽元的一边。更有甚者，这种情况可能发生在所有的递归调用中。</p>
+<h3 id="一种安全的做法">一种安全的做法</h3><p>一种安全的方针是随机选取枢纽元。但随机数生成一般是昂贵的，根本减少不了算法其余部分的平均运行时间。</p>
+<h3 id="三数中值分割法">三数中值分割法</h3><p>一般的做法是使用左端、右端和中心位置上的三个元素的中值作为枢纽元。</p>
+<h2 id="2-分割策略">2.分割策略</h2><p>有几种分割策略用于实践，但此处描述的分割方法能够给出安全的好的结果。</p>
+<p>将枢纽元与最后的元素交换使得枢纽元离开要被分割的数据段。i从第一个元素开始而j从倒数第二个元素开始。在分割阶段要做的就是把所有小元素移到数组的左边而把所有大元素移到数组的右边。当然，小和大都是相对于枢纽元素而言的。</p>
+<p>当i在j的左边时，我们将i右移，移过那些小于枢纽元的元素，并将j左移，移过那些大于枢纽元的元素。当i和j停止时，i指向一个大元素而j指向一个小元素。如果i在j的左边，那么将这两个元素互换，其效果是把一个大元素移向右边而把一个小元素移向左边。注意，当i和j已经交错时，不再交换。分割的最后一步是将枢纽元与i所指向的元素进行交换。因为分割结束的条件是i找到一个比pivot大的元素，且i、j已经交错，故将i与pivot指向的元素交换使得枢纽元素出于一个“中间”位置。</p>
+<p>到目前为止，我们都是假设所有元素互异，那么出现重复元素时该怎么办？问题的核心是怎么处理那些等于枢纽元素的关键字。我们的处理方式是，如果i和j遇到等于枢纽元的关键字，那么我们就让i和j都停止（然后执行交换）。如果i和j都停止，那么在相等的元素间将有很多次的交换。虽然这似乎没有什么意义，但是其正面效果则是i和j将在中间交错，因此当枢纽元被替代时，这种分割建立了几乎相等的子数组。归并排序分析告诉我们，此时总的运行时间为O(N log N)。</p>
+<h2 id="3-小数组">3.小数组</h2><p>对于很小的数组（N &lt;= 20），快速排序不如插入排序好。因为快速排序是递归的，所以这样的情形还经常发生。</p>
+<h2 id="4-实际的快速排序例程">4.实际的快速排序例程</h2><h3 id="实现三数中值分割方法的程序">实现三数中值分割方法的程序</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">median3</span><span class="params">(a, left, right)</span> &#123;            </span></span><br><span class="line">    var <span class="keyword">center</span> = Math.<span class="built_in">floor</span>((<span class="keyword">left</span> + <span class="keyword">right</span>) / <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">a</span>[<span class="keyword">left</span>] &gt; <span class="keyword">a</span>[<span class="keyword">center</span>])</span><br><span class="line">        swap(<span class="keyword">a</span>, <span class="keyword">left</span>, <span class="keyword">center</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">a</span>[<span class="keyword">left</span>] &gt; <span class="keyword">a</span>[<span class="keyword">right</span>])</span><br><span class="line">        swap(<span class="keyword">a</span>, <span class="keyword">left</span>, <span class="keyword">right</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">a</span>[<span class="keyword">center</span>] &gt; <span class="keyword">a</span>[<span class="keyword">right</span>])</span><br><span class="line">        swap(<span class="keyword">a</span>, <span class="keyword">center</span>, <span class="keyword">right</span>);</span><br><span class="line"></span><br><span class="line">    swap(<span class="keyword">a</span>, <span class="keyword">center</span>, <span class="keyword">right</span> - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">a</span>[<span class="keyword">right</span> - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">swap</span><span class="params">(a, x, y)</span> &#123;</span></span><br><span class="line">    var temp;</span><br><span class="line">    temp = <span class="keyword">a</span>[<span class="keyword">x</span>];</span><br><span class="line">    <span class="keyword">a</span>[<span class="keyword">x</span>] = <span class="keyword">a</span>[<span class="keyword">y</span>];</span><br><span class="line">    <span class="keyword">a</span>[<span class="keyword">y</span>] = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>选取枢纽元最容易的方法是对a[left]、a[right]、a[center]适当地排序。<br>这种做法还有额外的好处，即该三元素中的最小者被分在a[left]，而这正是分割阶段应该将它放到的位置。三个元素中的最大者被分在a[right]，这也是正确的位置，因为它大于枢纽元。 <em>因此我们可以把枢纽元放到a[right - 1]并在分割阶段将i和j初始化到left + 1和right - 2。</em> 因为a[left]比枢纽元小，所以将它用作j的境界标记，这是另一个好处。因此我们不必担心j越界。由于i将停在那些等于枢纽元的关键字处，故将枢纽元存储在a[right - 1]，将提供一个境界标记。</p>
+<h3 id="快速排序的主例程">快速排序的主例程</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function <span class="type">Qsort</span>(a, <span class="keyword">left</span>, <span class="keyword">right</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">left</span> + <span class="number">3</span> &lt;= <span class="keyword">right</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> pivot = median3(a, <span class="keyword">left</span>, <span class="keyword">right</span>),</span><br><span class="line">            i = <span class="keyword">left</span>,</span><br><span class="line">            j = <span class="keyword">right</span> - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">            <span class="keyword">while</span> (a[++i] &lt; pivot) &#123;&#125;</span><br><span class="line">            <span class="keyword">while</span> (a[--j] &gt; pivot) &#123;&#125;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; j) &#123;</span><br><span class="line">                <span class="built_in">swap</span>(a, i, j);</span><br><span class="line">            &#125; <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">swap</span>(a, i, <span class="keyword">right</span> - <span class="number">1</span>);</span><br><span class="line">        <span class="type">Qsort</span>(a, <span class="keyword">left</span>, i - <span class="number">1</span>);</span><br><span class="line">        <span class="type">Qsort</span>(a, i + <span class="number">1</span>, <span class="keyword">right</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">insertionSort</span>(a, <span class="keyword">left</span>, <span class="keyword">right</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是快速排序真正的核心。<br>4、5行将i和j初始化为比它们正确值超出1，使得不存在需要考虑的特殊情况。 <em>此处的初始化依赖于三数中值分割法有一些附加作用的事实。</em> </p>
+<p>令人感兴趣的是如果用下列代码2替代上述对应部分代码1将不能正常运行，因为若a[i] = a[i] = a[pivot]将产生一个无限循环。<br><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var pivot = media<span class="label">n3</span><span class="comment">(a, left, right)</span>,</span><br><span class="line">    i = left + <span class="number">1</span>,</span><br><span class="line">    j = right - <span class="number">2</span>;</span><br><span class="line">for <span class="comment">(;;)</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> <span class="comment">(a[i] &lt; pivot)</span> &#123;i += <span class="number">1</span>;&#125;</span><br><span class="line">    <span class="keyword">while</span> <span class="comment">(a[j] &gt; pivot)</span> &#123;j -= <span class="number">1</span>;&#125;</span><br><span class="line">    <span class="keyword">if</span> <span class="comment">(i &lt; j)</span> &#123;</span><br><span class="line">        swap<span class="comment">(a, i, j)</span>;</span><br><span class="line">    &#125; else</span><br><span class="line">        break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代码2碰上a[i] = a[pivot]时，循环条件不满足，后续语句不能执行，i值没有增加，同样j值也没有增加。此时a[i] = a[i] = a[pivot]，语句swap(a, i, j);执行后不能改变任何状况，然后就死循环了。</p>
+<p>而代码1中，i本应该初始化为left + 1， 但由于a[++i]，使得i值其实还是以left + 1开始执行。而且++i还有一个好处，即便a[i] = a[pivot]使得循环停止，但下次循环时i值先行加1，于是循环可继续执行而不会停留在同一i值而进入死循环。</p>
+<h3 id="插入排序-1">插入排序</h3><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertionSort</span><span class="params">(a, left, right)</span> <span class="comment">&#123;</span><br><span class="line">    var i, j, tmp;</span><br><span class="line">    for (i = left + 1; i &lt;= right; i++) &#123;</span><br><span class="line">        tmp = a[i]</span><br><span class="line">        for (j = i; j &gt;= left; j -= 1) &#123;</span><br><span class="line">            if(a[j - 1] &gt; tmp)&#123;</span><br><span class="line">                a[j] = a[j - 1];</span><br><span class="line">            &#125;</span><span class="title">else</span><span class="comment">&#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title">a</span>[<span class="title">j</span>] = <span class="title">tmp</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-整合代码">5.整合代码</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">function <span class="built_in">swap</span>(a, x, y) &#123;</span><br><span class="line">    <span class="keyword">var</span> temp;</span><br><span class="line">    temp = a[x];</span><br><span class="line">    a[x] = a[y];</span><br><span class="line">    a[y] = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function <span class="built_in">quickSort</span>(a) &#123;</span><br><span class="line">    <span class="keyword">var</span> n = a.length;</span><br><span class="line">    <span class="type">Qsort</span>(a, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function median3(a, <span class="keyword">left</span>, <span class="keyword">right</span>) &#123;            </span><br><span class="line">    <span class="keyword">var</span> center = <span class="type">Math</span>.floor((<span class="keyword">left</span> + <span class="keyword">right</span>) / <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (a[<span class="keyword">left</span>] &gt; a[center])</span><br><span class="line">        <span class="built_in">swap</span>(a, <span class="keyword">left</span>, center);</span><br><span class="line">    <span class="keyword">if</span> (a[<span class="keyword">left</span>] &gt; a[<span class="keyword">right</span>])</span><br><span class="line">        <span class="built_in">swap</span>(a, <span class="keyword">left</span>, <span class="keyword">right</span>);</span><br><span class="line">    <span class="keyword">if</span> (a[center] &gt; a[<span class="keyword">right</span>])</span><br><span class="line">        <span class="built_in">swap</span>(a, center, <span class="keyword">right</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">swap</span>(a, center, <span class="keyword">right</span> - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> a[<span class="keyword">right</span> - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function <span class="type">Qsort</span>(a, <span class="keyword">left</span>, <span class="keyword">right</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">left</span> + <span class="number">3</span> &lt;= <span class="keyword">right</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> pivot = median3(a, <span class="keyword">left</span>, <span class="keyword">right</span>),</span><br><span class="line">            i = <span class="keyword">left</span>,</span><br><span class="line">            j = <span class="keyword">right</span> - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">            <span class="keyword">while</span> (a[++i] &lt; pivot) &#123;&#125;</span><br><span class="line">            <span class="keyword">while</span> (a[--j] &gt; pivot) &#123;&#125;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; j) &#123;</span><br><span class="line">                <span class="built_in">swap</span>(a, i, j);</span><br><span class="line">            &#125; <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">swap</span>(a, i, <span class="keyword">right</span> - <span class="number">1</span>);</span><br><span class="line">        <span class="type">Qsort</span>(a, <span class="keyword">left</span>, i - <span class="number">1</span>);</span><br><span class="line">        <span class="type">Qsort</span>(a, i + <span class="number">1</span>, <span class="keyword">right</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">insertionSort</span>(a, <span class="keyword">left</span>, <span class="keyword">right</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function <span class="built_in">insertionSort</span>(a, <span class="keyword">left</span>, <span class="keyword">right</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> i, j, tmp;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="keyword">left</span> + <span class="number">1</span>; i &lt;= <span class="keyword">right</span>; i++) &#123;</span><br><span class="line">        tmp = a[i]</span><br><span class="line">        <span class="keyword">for</span> (j = i; j &gt;= <span class="keyword">left</span>; j -= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(a[j - <span class="number">1</span>] &gt; tmp)&#123;</span><br><span class="line">                a[j] = a[j - <span class="number">1</span>];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        a[j] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = [<span class="number">8</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">7</span>, <span class="number">0</span>];</span><br><span class="line"><span class="built_in">quickSort</span>(a);</span><br><span class="line">console.log(a);</span><br></pre></td></tr></table></figure>
         
       
     </div>
@@ -275,7 +266,7 @@
 
       <div class="site-overview">
         <div class="site-author motion-element">
-          <img class="site-author-image" src="/images/default_avatar.jpg" alt="liz" />
+          <img class="site-author-image" src="images/default_avatar.jpg" alt="liz" />
           <p class="site-author-name">liz</p>
         </div>
         <p class="site-description motion-element"></p>
@@ -283,21 +274,21 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">2</span>
-              <span class="site-state-item-name">文章</span>
+              <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
               <span class="site-state-item-count">0</span>
-              <span class="site-state-item-name">分類</span>
+              <span class="site-state-item-name">分类</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">2</span>
-              <span class="site-state-item-name">標籤</span>
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">标签</span>
               </a>
           </div>
 
@@ -309,35 +300,17 @@
           
             
               <span class="links-of-author-item">
-              <a href="your-github-url" target="_blank">GitHub</a>
+              <a href="https://github.com/lizhengnacl" target="_blank">github</a>
             </span>
             
               <span class="links-of-author-item">
-              <a href="your-twitter-url" target="_blank">Twitter</a>
-            </span>
-            
-              <span class="links-of-author-item">
-              <a href="your-weibo-url" target="_blank">Weibo</a>
-            </span>
-            
-              <span class="links-of-author-item">
-              <a href="your-douban-url" target="_blank">DouBan</a>
-            </span>
-            
-              <span class="links-of-author-item">
-              <a href="your-zhihu-url" target="_blank">ZhiHu</a>
+              <a href="http://weibo.com/u/3409563520" target="_blank">weibo</a>
             </span>
             
           
         </div>
 
         
-        
-          <div class="cc-license motion-element">
-            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
-            </a>
-          </div>
         
 
       </div>
@@ -354,7 +327,7 @@
       <div class="footer-inner">
         <div class="copyright">
   
-  &copy; &nbsp;  2011 - 
+  &copy; &nbsp; 
   2015
   <span class="with-love">
     <i class="icon-heart"></i>
@@ -363,11 +336,11 @@
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
-  主題 -
+  主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT
   </a>
@@ -575,24 +548,11 @@
 
   
   
-
-  
-    
   
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"lizhengnacl"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
   
+
+
 
 
   
