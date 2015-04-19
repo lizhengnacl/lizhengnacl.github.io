@@ -110,6 +110,97 @@
           
           
             
+              <a class="post-title-link" href="/2015/04/19/Regexp/">
+                Regexp
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-04-19
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/JavaScript/">JavaScript</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> greeting = 'my name <span class="keyword">is</span> $&#123;name&#125;, age $&#123;age&#125;, name <span class="keyword">is</span> $&#123;name&#125;',</span><br><span class="line">    re = /\$\&#123;(\w+)\&#125;/g,</span><br><span class="line">    obj = &#123;name : 'liz', age : <span class="number">23</span>&#125;,</span><br><span class="line">    <span class="literal">result</span>;</span><br><span class="line"><span class="keyword">while</span>(<span class="literal">result</span> = re.exec(greeting))&#123;</span><br><span class="line">    greeting = greeting.replace(<span class="literal">result</span>[<span class="number">0</span>], obj[<span class="literal">result</span>[<span class="number">1</span>]]);</span><br><span class="line">    console.log(<span class="literal">result</span>);</span><br><span class="line">    console.log(re.lastIndex)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行后的结果分别为<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">"$&#123;name&#125;"</span>, <span class="string">"name"</span>, index: <span class="number">11</span>, input: <span class="string">"my name is $&#123;name&#125;, age $&#123;age&#125;, name is $&#123;name&#125;"</span>]</span><br><span class="line">[<span class="string">"$&#123;age&#125;"</span>, <span class="string">"age"</span>, index: <span class="number">20</span>, input: <span class="string">"my name is liz, age $&#123;age&#125;, name is $&#123;name&#125;"</span>]</span><br><span class="line">[<span class="string">"$&#123;name&#125;"</span>, <span class="string">"name"</span>, index: <span class="number">32</span>, input: <span class="string">"my name is liz, age 23, name is $&#123;name&#125;"</span>]</span><br></pre></td></tr></table></figure></p>
+<p>结果数组中包含四项：</p>
+<ol>
+<li>数组中下标为0的元素包含正则表达式re匹配的子字符串。<code>\${(\w+)}</code>对应<code>“${name}”</code>。</li>
+<li>数组中下标为1的元素是分组1捕获的文本。<code>(\w+)</code>对应<code>“name”</code>。</li>
+<li>数组中下标为2的元素是<strong>输入字符串</strong>中匹配到的字符串的起始位置。<code>my name is ${name}, age <strong>$</strong>{age}, name is ${name}</code>。注意，在第二次循环中<strong>输入字符串</strong>为上次循环的结果，也就是<code>my name is liz, age ${age}, name is ${name}</code>, 而此时元素对应的位置为<code>my name is liz, age <strong>$</strong>{age}, name is ${name}</code>。</li>
+<li>数组中下标为2的元素是<strong>输入字符串</strong>。<br><br><br>注意，如果re中带有g标识（全局标识），查找不是从这个字符串的起始位置开始，而是从re.lastIndex（初始位置为0）位置开始。如果匹配成功，那么re.lastIndex将被设置为该匹配后的第一个字符的位置（在此例中，第一次循环后re.lastIndex对应的位置为第一个<code>${name}</code>后的逗号，<code>my name is ${name}<strong>,</strong> age ${age}, name is ${name}</code>）。不成功则重置为零。<br><br></li>
+</ol>
+<p><strong>这就允许你通过循环调用exec去查询一个匹配模式在一个字符串中发生了几次。</strong><br>有两件事请需要注意：</p>
+<ol>
+<li>如果你提前退出了这个循环，再次进入这个循环前必须把re.lastIndex重置到0</li>
+<li>^因子仅匹配re.lastIndex为0的情况。</li>
+</ol>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/function/"> #function </a>
+          
+            <a href="/tags/regexp-exec-string/"> #regexp.exec(string) </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/04/19/JSONP/">
                 JSONP
               </a>
@@ -561,21 +652,21 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
