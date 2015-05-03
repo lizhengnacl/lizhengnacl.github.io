@@ -18,7 +18,7 @@
 
 
 
-  <meta name="keywords" content="二叉查找树,非递归遍历," />
+  <meta name="keywords" content="CSS," />
 
 
 
@@ -29,7 +29,7 @@
 
 
 
-  <title> 二叉查找树 // lizhengnacl </title>
+  <title> 定位元素 // lizhengnacl </title>
 </head>
 
 <body>
@@ -108,7 +108,7 @@
           
           
             
-              二叉查找树
+              定位元素
             
           
         </h1>
@@ -116,14 +116,14 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-04-13
+          发表于 2014-10-11
         </span>
 
         
           <span class="post-category">
             &nbsp; | &nbsp; 分类于
             
-              <a href="/categories/数据结构算法/">数据结构算法</a>
+              <a href="/categories/CSS/">CSS</a>
 
               
               
@@ -144,12 +144,42 @@
       
 
       
-        <h1 id="二叉查找树">二叉查找树</h1><h2 id="构建二叉查找树">构建二叉查找树</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">BST</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.root = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">this</span>.insert = insert;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Node</span><span class="params">(data, left, right)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.data = data;</span><br><span class="line">    <span class="keyword">this</span>.left = left;</span><br><span class="line">    <span class="keyword">this</span>.right = right;</span><br><span class="line">    <span class="keyword">this</span>.num = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">function insert(<span class="built_in">data</span>) &#123;</span><br><span class="line">    <span class="built_in">var</span> n <span class="subst">=</span> <span class="literal">new</span> Node(<span class="built_in">data</span>, <span class="built_in">null</span>, <span class="built_in">null</span>)</span><br><span class="line">    <span class="keyword">if</span> (this<span class="built_in">.</span>root <span class="subst">===</span> <span class="built_in">null</span>) &#123;</span><br><span class="line">        this<span class="built_in">.</span>root <span class="subst">=</span> n;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">var</span> cur <span class="subst">=</span> this<span class="built_in">.</span>root,</span><br><span class="line">            <span class="keyword">parent</span>;</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="keyword">parent</span> <span class="subst">=</span> cur;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">data</span> <span class="subst">&lt;</span> cur<span class="built_in">.</span><span class="built_in">data</span>) &#123;</span><br><span class="line">                cur <span class="subst">=</span> cur<span class="built_in">.</span>left;</span><br><span class="line">                <span class="keyword">if</span> (cur <span class="subst">===</span> <span class="built_in">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">parent</span><span class="built_in">.</span>left <span class="subst">=</span> n;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">data</span> <span class="subst">&gt;</span> cur<span class="built_in">.</span><span class="built_in">data</span>) &#123;</span><br><span class="line">                cur <span class="subst">=</span> cur<span class="built_in">.</span>right;</span><br><span class="line">                <span class="keyword">if</span> (cur <span class="subst">===</span> <span class="built_in">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">parent</span><span class="built_in">.</span>right <span class="subst">=</span> n;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cur<span class="built_in">.</span>num <span class="subst">+=</span> <span class="number">1</span>;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="非递归遍历">非递归遍历</h2><h3 id="中序遍历">中序遍历</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inOrder</span><span class="params">(node)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [],</span><br><span class="line">        p = node;</span><br><span class="line">    <span class="keyword">while</span> (p !== <span class="literal">null</span> || arr.length) &#123;</span><br><span class="line">        <span class="keyword">while</span> (p !== <span class="literal">null</span>) &#123;</span><br><span class="line">            arr.push(p);</span><br><span class="line">            p = p.left;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (arr.length) &#123;</span><br><span class="line">            p = arr.pop();</span><br><span class="line">            <span class="comment">// console.log(p.data);</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; p.num; i += <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(p.data);</span><br><span class="line">            &#125;</span><br><span class="line">            p = p.right;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="先序遍历">先序遍历</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">preOrder</span><span class="params">(node)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [],</span><br><span class="line">        p = node;</span><br><span class="line">    <span class="keyword">while</span> (p !== <span class="literal">null</span> || arr.length) &#123;</span><br><span class="line">        <span class="keyword">while</span> (p !== <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">// console.log(p.data);</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; p.num; i += <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(p.data);</span><br><span class="line">            &#125;</span><br><span class="line">            arr.push(p);</span><br><span class="line">            p = p.left;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (arr.length) &#123;</span><br><span class="line">            p = arr.pop();</span><br><span class="line">            p = p.right;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="后续遍历">后续遍历</h3><p>对于任一结点P，将其入栈，然后沿其左子树一直往下搜索，直到搜索到没有左孩子的结点，此时该结点出现在栈顶，但是此时不能将其出栈并访问，因此其右孩子还为被访问。所以接下来按照相同的规则对其右子树进行相同的处理，当访问完其右孩子时，该结点又出现在栈顶，此时可以将其出栈并访问。这样就保证了正确的访问顺序。可以看出，在这个过程中，每个结点都两次出现在栈顶，只有在第二次出现在栈顶时，才能访问它。因此需要多设置一个变量标识该结点是否是第一次出现在栈顶。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">postOrder</span><span class="params">(node)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [],</span><br><span class="line">        p = node,</span><br><span class="line">        tmp;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (p !== <span class="literal">null</span> || arr.length) &#123;</span><br><span class="line">        <span class="keyword">while</span> (p !== <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">// 第一次出现在栈顶</span></span><br><span class="line">            p.first = <span class="literal">true</span>;</span><br><span class="line">            arr.push(p);</span><br><span class="line">            p = p.left;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (arr.length) &#123;</span><br><span class="line">            <span class="comment">// 使用临时变量能简化问题</span></span><br><span class="line">            tmp = arr.pop();</span><br><span class="line">            <span class="keyword">if</span> (tmp.first === <span class="literal">true</span>) &#123;</span><br><span class="line">                <span class="comment">// 第二次出现</span></span><br><span class="line">                tmp.first = <span class="literal">false</span>;</span><br><span class="line">                arr.push(tmp);</span><br><span class="line">                p = tmp.right;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// console.log(tmp.data);</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; tmp.num; i += <span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(tmp.data);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <h3 id="定位的类型">定位的类型</h3><ol>
+<li><code>static</code></li>
+<li><code>relative</code></li>
+<li><code>absolute</code>元素框从文档流中完全删除，并相对于其包含块定位，包含块可能是文档中的另一个元素或者是初始包含块。元素原先在正常文档流中所占的空间会关闭，就好像该元素原来不存在一样。元素定位后生成一个块级框，而不论原来它在正常流中生成何种类型的框。</li>
+<li><code>fixed</code>元素框的表现类似于将position设置为absolute，不过其包含块是视窗本身。</li>
+</ol>
+<h3 id="包含块">包含块</h3><p>对于浮动元素，其包含块定义为最近的块级祖先元素。对于定位元素，情况没有那么简单。</p>
+<p><strong>根元素</strong>的包含块（也称为初始化包含块）由用户代理建立。在HTML中，根元素就是HTML元素，不过有些浏览器会使用body作为根元素。在大多数浏览器中，初始化包含块是一个视窗大小的矩形。</p>
+<p>对于一个非根元素，如果其<code>position</code>值是<code>relative</code>或<code>static</code>，包含块则由最近的块级框、表单元格或行内块祖先框的内容边界构成。</p>
+<p>对于一个非根元素，如果其<code>position</code>值是<code>absolute</code>，包含块设置为最近的<code>position</code>值不是<code>static</code>的祖先元素（可以使任何类型）。这个过程如下：</p>
+<ol>
+<li><p>如果这个祖先是块级元素，包含块则设置为该元素的边框界定的区域</p>
+</li>
+<li><p>如果这个祖先是行内元素，包含块则设置为该祖先元素的内容边界。</p>
+</li>
+<li><p>如果没有祖先，元素的包含块就定义为初始化包含块。</p>
+</li>
+</ol>
+<p><strong>包含块——“浮动相对的是内容区域，定位相对的是边框边界界定的区域”</strong></p>
+<p>元素可以定位到其包含块的外面。这与浮动元素使用负外边距浮动到其父元素内容区外面很类似。这也说明，“包含块”一词实际上应该是“定位上下文”。</p>
+<h3 id="非替换元素的放置和大小">非替换元素的放置和大小</h3><p>元素的大小取决于其包含块。</p>
+<p>考虑一个定位元素的宽度和水平放置。这可以表示为一个等式：left+margin-left+border-left-width+padding-left+width+padding-right、border-right-width+margin-right+right=包含块的width。注意这个包含块width的具体含义，浮动和定位是不同的。</p>
+<ol>
+<li><p>元素display设置为absolute后生成一个块级框，类似于元素float设置为浮动，也会生成一个块级框，而且元素的width设置为“收放得正好合适”。</p>
+</li>
+<li><p>元素left和right设置为固定值时，左右外边距分别设置为auto可以达到左右居中的效果；元素top和bottom设置为固定时，上下外边距分别设置为auto也可达到上下居中的效果。</p>
+</li>
+<li><p>元素过度受限时，客户代理重置的顺序为right、margin-right（水平），bottom、margin-bottom（垂直）。</p>
+</li>
+<li><p>垂直方向与水平方向上类似。</p>
+</li>
+</ol>
+<h3 id="替换元素的放置和大小">替换元素的放置和大小</h3><p>替换元素有固有的高度和宽度，因此其大小不会改变，除非创作人员有意显式地修改。因此，在替换元素中没有“恰当收放”行为的概念。其余情况跟上述类似。</p>
+<h3 id="Z轴上的放置">Z轴上的放置</h3><p>z-index和top、bottom、left、right一样，是定位元素才有的概念。</p>
+<h3 id="固定元素">固定元素</h3><p>固定元素与绝对定位很类似，只不过固定元素的包含块是视窗。固定定位时，元素会完全从文档流中去除，不会有相对于文档中任何部分的位置。</p>
+<h3 id="相对定位">相对定位</h3><p>相对定位更多的应用于为绝对定位设置定位上下文。</p>
 
       
     </div>
@@ -158,9 +188,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/二叉查找树/"> #二叉查找树 </a>
-          
-            <a href="/tags/非递归遍历/"> #非递归遍历 </a>
+            <a href="/tags/CSS/"> #CSS </a>
           
         </div>
       
@@ -169,13 +197,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/04/15/可拖动/">可拖动</a>
+              <a href="/2014/11/30/计算特指度/">计算特指度</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/04/12/排序/">排序</a>
+              <a href="/2014/10/10/浮动元素/">浮动元素</a>
             
           </div>
         </div>
@@ -280,7 +308,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#二叉查找树"><span class="nav-number">1.</span> <span class="nav-text">二叉查找树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#构建二叉查找树"><span class="nav-number">1.1.</span> <span class="nav-text">构建二叉查找树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非递归遍历"><span class="nav-number">1.2.</span> <span class="nav-text">非递归遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#中序遍历"><span class="nav-number">1.2.1.</span> <span class="nav-text">中序遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#先序遍历"><span class="nav-number">1.2.2.</span> <span class="nav-text">先序遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后续遍历"><span class="nav-number">1.2.3.</span> <span class="nav-text">后续遍历</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#定位的类型"><span class="nav-number">1.</span> <span class="nav-text">定位的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包含块"><span class="nav-number">2.</span> <span class="nav-text">包含块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非替换元素的放置和大小"><span class="nav-number">3.</span> <span class="nav-text">非替换元素的放置和大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#替换元素的放置和大小"><span class="nav-number">4.</span> <span class="nav-text">替换元素的放置和大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Z轴上的放置"><span class="nav-number">5.</span> <span class="nav-text">Z轴上的放置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#固定元素"><span class="nav-number">6.</span> <span class="nav-text">固定元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相对定位"><span class="nav-number">7.</span> <span class="nav-text">相对定位</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
