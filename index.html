@@ -110,6 +110,112 @@
           
           
             
+              <a class="post-title-link" href="/2015/06/15/requirejs/">
+                requirejs
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-06-15
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/JavaScript/">JavaScript</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>最近看到阮一峰老师的关于<a href="http://www.ruanyifeng.com/blog/2012/10/javascript_module.html" target="_blank" rel="external">模块化编程</a>的博文，对老师的叙事能力佩服到五体投地，这是我见过的关于前端模块化最易懂的解读。</p>
+<p>前段时间项目中用到requireJS，现总结下在实际操作中是如何使用的，方便日后查询。</p>
+<h2 id="目录结构如下所示：">目录结构如下所示：</h2><p><img src="/images/20150615/1.png" alt="scaffold"></p>
+<p>目录与文件对应关系如下：</p>
+<ol>
+<li><code>conf</code>：配置文件</li>
+<li><code>general</code>：通用模块</li>
+<li><code>lib</code>：第三方库</li>
+<li><code>page</code>：物理页面</li>
+<li><code>tpl</code>：html模板</li>
+</ol>
+<h2 id="现展示两种模块的写法及引用：">现展示两种模块的写法及引用：</h2><h3 id="1-类似Node中的写法">1.类似Node中的写法</h3><h4 id="general中定义的通用模块func-js"><code>general</code>中定义的通用模块func.js</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span><span class="params">(require, exports, module)</span> </span>&#123;</span><br><span class="line"><span class="pi">    "use strict"</span>;</span><br><span class="line">    <span class="comment">// 若模块之间存在依赖关系，可在此引用</span></span><br><span class="line">    <span class="comment">// var func1 = require('general/func1');</span></span><br><span class="line">    <span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 使用func1</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'node like.'</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="built_in">module</span>.exports = func;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="page中与一个物理页面对应的main-js"><code>page</code>中与一个物理页面对应的main.js</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="string">"page/main"</span>, <span class="function"><span class="keyword">function</span><span class="params">(require, exports, module)</span> </span>&#123;</span><br><span class="line"><span class="pi">    "use strict"</span>;</span><br><span class="line">    <span class="comment">// 可依次引用需要的功能模块</span></span><br><span class="line">    <span class="comment">// var func2 = require('general/func2');</span></span><br><span class="line">    <span class="comment">// var func3 = require('general/func3');</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">var</span> func = <span class="built_in">require</span>(<span class="string">"general/func"</span>);</span><br><span class="line">    <span class="comment">// do something with func, func2, func3...</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">require</span>([<span class="string">"page/main"</span>]);</span><br></pre></td></tr></table></figure>
+<h3 id="2-requireJS中介绍的一般写法">2.<a href="http://requirejs.cn/docs/api.html" target="_blank" rel="external">requireJS</a>中介绍的一般写法</h3><h4 id="general中定义的通用模块func-js-1"><code>general</code>中定义的通用模块func.js</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'normal like'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>若模块中存在依赖关系<br>注意依赖数组[‘general/func2’, ‘general/func3’]与函数中的参数function(func2, func3)一一对应<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">define([<span class="string">'general/func2'</span>, <span class="string">'general/func3'</span>], <span class="function"><span class="keyword">function</span><span class="params">(func2, func3)</span></span>&#123;</span><br><span class="line"><span class="pi">    'use strict'</span>;</span><br><span class="line">    func2();</span><br><span class="line">    func3();</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'success'</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h4 id="page中与一个物理页面对应的main-js-1"><code>page</code>中与一个物理页面对应的main.js</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">require(['general/<span class="func"><span class="keyword">func</span>'], <span class="title">function</span><span class="params">(<span class="keyword">func</span>)</span></span>&#123;</span><br><span class="line">    <span class="func"><span class="keyword">func</span><span class="params">()</span></span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>一个页面中引用多个模块<br>注意func依赖func2、func3，引用func后，func2、func3自动被加载进来了。<br><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">require([<span class="symbol">'general</span>/func', <span class="symbol">'general</span>/func4', <span class="symbol">'general</span>/func5'], <span class="keyword">function</span>(func, func4, func5)&#123;</span><br><span class="line">    func<span class="literal">()</span>;</span><br><span class="line">    func4<span class="literal">()</span>;</span><br><span class="line">    func5<span class="literal">()</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-上述两种方法的主要区别为：简单包装CommonJS来定义模块">3.上述两种方法的主要区别为：<a href="http://requirejs.cn/docs/api.html#cjsmodule" target="_blank" rel="external">简单包装CommonJS来定义模块</a></h3><h3 id="4-页面中引用">4.页面中引用</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- code --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"../js/lib/require.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"../js/conf/requireConf.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"../js/page/main.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>你当然可以这么引用<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- code --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"../js/lib/require.js"</span> <span class="attribute">async</span>=<span class="value">"true"</span> <span class="attribute">defer</span> <span class="attribute">data-main</span>=<span class="value">"../js/page/main"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><code>defer</code>为了兼容IE</li>
+<li><code>async</code>告诉浏览器不用等待script加载完成，直接进行后续操作</li>
+<li><code>date-main</code>指定网页程序的主模块，第一个被require.js加载</li>
+</ol>
+<p>然后将配置文件requireConf.js中的代码至于main.js的最上方<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 配置文件</span></span><br><span class="line">requirejs.config(&#123;</span><br><span class="line">    <span class="comment">// baseUrl : "http://s0.meituan.net/mit-pc-web/src/js",</span></span><br><span class="line">    baseUrl : <span class="string">'../js'</span>,</span><br><span class="line">    paths : &#123;</span><br><span class="line">        jquery : <span class="string">'conf/jquery'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">require</span>([<span class="string">'general/func'</span>], <span class="function"><span class="keyword">function</span><span class="params">(func)</span></span>&#123;</span><br><span class="line">    func();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="5-配置文件">5.配置文件</h3><h4 id="requireConf-js"><code>requireConf.js</code></h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">requirejs</span><span class="class">.config</span>(<span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">baseUrl </span>:<span class="value"> <span class="string">'../js'</span>,</span><br><span class="line">    paths : &#123;</span><br><span class="line">        jquery : <span class="string">'conf/jquery'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span></span>;</span></span><br></pre></td></tr></table></figure>
+<p>假设根目录为<code>/</code>, html文件所在路径为<code>/html</code>,配置文件首先得被加载进页面中，所以js在html页面中以相对html于所在地址进行引用。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- code --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"../js/lib/require.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"../js/conf/requireConf.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"../js/page/main.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>requireConf.js所在位置为<code>/js/conf</code>, <code>baseUrl:’../js’</code>告诉require.js加载模块的默认路径为<code>/js</code><br><code>paths</code>将<code>require(‘jquery’)</code>映射为<code>require(‘conf/jquery’)</code></p>
+<h4 id="jquery-js"><code>jquery.js</code></h4><p>将jquery定义为一个模块<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">define<span class="list">(<span class="keyword">function</span><span class="list">(<span class="keyword">require</span>, exports, modules)</span>&#123;</span><br><span class="line">    require<span class="list">(<span class="quoted">'lib/jquery</span>.min')</span><span class="comment">;</span></span><br><span class="line">    modules.exports = jQuery.noConflict<span class="list">()</span><span class="comment">;</span></span><br><span class="line">&#125;)</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AMD/"> #AMD </a>
+          
+            <a href="/tags/CommonJS/"> #CommonJS </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/04/19/Regexp/">
                 Regexp
               </a>
@@ -243,7 +349,7 @@
           <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">addScript</span><span class="params">(url)</span></span>&#123;</span><br><span class="line">        <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">        script.src = url;</span><br><span class="line">        <span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>].appendChild(script);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">liz</span><span class="params">(obj)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> obj)&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(obj[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> url = <span class="string">'http://www.lizweb.me/case/test.php?a=liz'</span>;</span><br><span class="line">    addScript(url);</span><br><span class="line">    </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">&lt;?php</span></span><br><span class="line">    <span class="variable">$result</span>=<span class="string">"&#123;'name':'liz','age':23&#125;"</span>;  </span><br><span class="line">    <span class="variable">$callback</span>=<span class="variable">$_GET</span>[<span class="string">'a'</span>];   </span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$callback</span>.<span class="string">"($result)"</span>;</span><br><span class="line"><span class="preprocessor">?&gt;</span></span><br></pre></td></tr></table></figure>
 <p>请求地址变量<code>url</code>提供的回调函数的名称为<code>liz</code>与函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">liz</span><span class="params">(obj)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> obj)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(obj[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>相对应。<br>请求地址变量<code>url</code>中<code>?a=liz</code>的变量名a与服务器代码<code>$callback=$_GET[‘a’];</code>相对应。<br>代码<code>echo $callback.”($result)”;</code>与<code>liz(obj)</code>相对应。</p>
+<p>相对应。<br>请求地址变量<code>url</code>中<code>?a=liz</code>的变量名a与服务器代码<code>$callback=$_GET[‘a’];</code>相对应。<br>代码<code>echo $callback.”($result)”;</code>与<code>liz(obj)</code>相对应。<br><br><br>获取公共API</p>
 
         
       
@@ -331,14 +437,14 @@
 </ul>
 <p>这是实现布局的三个最基本的原子技术。只要巧妙组合，并加以灵活运用，就能“拼”出各种布局的实现方案。<br>尝试之路考虑以下DOM结构：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">div</span> <span class="property">id</span>=<span class="string">"page"</span>&gt;    </span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="property">id</span>=<span class="string">"hd"</span>&gt;&lt;/<span class="keyword">div</span>&gt;    </span><br><span class="line">        &lt;<span class="keyword">div</span> <span class="property">id</span>=<span class="string">"bd"</span>&gt;        </span><br><span class="line">            &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"main"</span>&gt;&lt;/<span class="keyword">div</span>&gt;        </span><br><span class="line">            &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"sub"</span>&gt;&lt;/<span class="keyword">div</span>&gt;        </span><br><span class="line">            &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"extra"</span>&gt;&lt;/<span class="keyword">div</span>&gt;    </span><br><span class="line">        &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="property">id</span>=<span class="string">"ft"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">div</span>&gt;</span><br></pre></td></tr></table></figure></p>
 <p>利用浮动元素的负边距来定位：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.main</span> <span class="rules">&#123;        </span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;       </span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">100%</span></span></span>;</span><br><span class="line">&#125;</span>  </span><br><span class="line"><span class="class">.sub</span> <span class="rules">&#123;       </span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;        </span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;        </span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">100%</span></span></span>;    </span><br><span class="line">&#125;</span>   </span><br><span class="line"><span class="class">.extra</span> <span class="rules">&#123;        </span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;        </span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;        </span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">190px</span></span></span>;   </span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>显示效果如下图<br><img src="http://7ximbf.com1.z0.glb.clouddn.com/20150415/1.PNG" alt="Alt 1" title="1"><br>下面我们把负边距都去掉：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.sub</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="comment">/*margin-left: -100%;*/</span></span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.extra</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="comment">/*margin-left: -190px;*/</span></span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>效果如下。<br><img src="http://7ximbf.com1.z0.glb.clouddn.com/20150415/2.PNG" alt="Alt 2" title="2"><br>添加上<code>.sub</code>的负边距：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.sub</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">100%</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.extra</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="comment">/*margin-left: -190px;*/</span></span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>效果如下。<br><img src="http://7ximbf.com1.z0.glb.clouddn.com/20150415/3.PNG" alt="Alt 3" title="3"><br>再添加<code>.extra</code>负边距：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.sub</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">100%</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.extra</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">190px</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>效果如下<br><img src="http://7ximbf.com1.z0.glb.clouddn.com/20150415/1.PNG" alt="Alt 1" title="1"><br>考虑一下为什么负边距能使<code>.sub</code>和<code>.extra</code>移动到上面？<br><code>width: 100%;</code>的情况不太直观，那咱们讨论一下<code>width: 700px</code>的情况。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.main</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">700px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.sub</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">700px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.extra</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">190px</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>显示结果如下：<br><img src="http://7ximbf.com1.z0.glb.clouddn.com/20150415/4.PNG" alt="Alt 4" title="4"><br>下面去掉负边距试试：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.main</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">700px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.sub</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="comment">/*margin-left: -700px;*/</span></span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.extra</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="comment">/*margin-left: -190px;*/</span></span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>显示如下：<br><img src="http://7ximbf.com1.z0.glb.clouddn.com/20150415/5.PNG" alt="Alt 5" title="5"><br>正如你所看见的，它只是三个块浮动并列在一起而已。<br>下面设置<code>.sub</code>负边距为<code>-700px</code>给左边的<code>.main</code>腾出<code>700px</code>宽的空间<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.main</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">700px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.sub</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">700px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.extra</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="comment">/*margin-left: -190px;*/</span></span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>得到效果图：<br><img src="http://7ximbf.com1.z0.glb.clouddn.com/20150415/6.PNG" alt="Alt 6" title="6"><br>由于.main位于.extra的文档流上方，所以.extra没有贴着.sub到达左边，而是紧挨着.main左边。<br>所以此时只需将.extra左边距设置为-190px就能使得自己向左移动190px，从而达到想要的效果。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.main</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">700px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.sub</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">700px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.extra</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">190px</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>效果如下：<br><img src="http://7ximbf.com1.z0.glb.clouddn.com/20150415/7.PNG" alt="Alt 7" title="7"><br>width: 100%表示元素的width等于包含块的width，其实就是包含块的距离。与width: 700px; 实际表示的意思相同。</p>
+<p>显示效果如下图<br><img src="/images/20150415/1.png" alt="Alt 1" title="1"><br>下面我们把负边距都去掉：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.sub</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="comment">/*margin-left: -100%;*/</span></span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.extra</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="comment">/*margin-left: -190px;*/</span></span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>效果如下。<br><img src="/images/20150415/2.png" alt="Alt 2" title="2"><br>添加上<code>.sub</code>的负边距：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.sub</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">100%</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.extra</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="comment">/*margin-left: -190px;*/</span></span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>效果如下。<br><img src="/images/20150415/3.png" alt="Alt 3" title="3"><br>再添加<code>.extra</code>负边距：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.sub</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">100%</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.extra</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">190px</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>效果如下<br><img src="/images/20150415/1.png" alt="Alt 1" title="1"><br>考虑一下为什么负边距能使<code>.sub</code>和<code>.extra</code>移动到上面？<br><code>width: 100%;</code>的情况不太直观，那咱们讨论一下<code>width: 700px</code>的情况。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.main</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">700px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.sub</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">700px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.extra</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">190px</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>显示结果如下：<br><img src="/images/20150415/4.png" alt="Alt 4" title="4"><br>下面去掉负边距试试：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.main</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">700px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.sub</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="comment">/*margin-left: -700px;*/</span></span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.extra</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="comment">/*margin-left: -190px;*/</span></span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>显示如下：<br><img src="/images/20150415/5.png" alt="Alt 5" title="5"><br>正如你所看见的，它只是三个块浮动并列在一起而已。<br>下面设置<code>.sub</code>负边距为<code>-700px</code>给左边的<code>.main</code>腾出<code>700px</code>宽的空间<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.main</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">700px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.sub</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">700px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.extra</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="comment">/*margin-left: -190px;*/</span></span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>得到效果图：<br><img src="/images/20150415/6.png" alt="Alt 6" title="6"><br>由于.main位于.extra的文档流上方，所以.extra没有贴着.sub到达左边，而是紧挨着.main左边。<br>所以此时只需将.extra左边距设置为-190px就能使得自己向左移动190px，从而达到想要的效果。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.main</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">700px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.sub</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">700px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.extra</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">190px</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>效果如下：<br><img src="/images/20150415/7.png" alt="Alt 7" title="7"><br>width: 100%表示元素的width等于包含块的width，其实就是包含块的距离。与width: 700px; 实际表示的意思相同。</p>
 
         
       
@@ -621,9 +727,361 @@
 
 
     
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2014/11/30/计算特指度/">
+                计算特指度
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2014-11-30
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/CSS/">CSS</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>总结一下怎么计算选择符的特指度。首先，有一个简单的记分规则，即对每个选择符都要按下面的<code>ICE</code>公式计算三个值：</p>
+<p><strong>I - C - E</strong></p>
+<p>ICE并非真正的三位数，只不过大多数情况下把结果看成一个三位数没有问题，三位数最大的胜出。但是，千万得知道0-1-12与0-2-0相比，仍然是0-2-0的特指度更高。</p>
+<p>三个字母间的短横线是分隔开，并非减号。针对这个公式的计分办法如下：</p>
+<p>选择符中有一个ID，就在I的位置上加1；</p>
+<p>选择符中有一个类，就在C的位置上加1；</p>
+<p>选择符中有一个元素（标签）名，就在E的位置上加1；</p>
+<p>得到一个三位数。</p>
+<p>好了，下面通过几个例子来理解特指度。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">p</span>                               <span class="number">0</span>-<span class="number">0</span>-<span class="number">1</span>特指度 = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="tag">p</span><span class="class">.largetext</span>                     <span class="number">0</span>-<span class="number">1</span>-<span class="number">1</span>特指度 = <span class="number">11</span></span><br><span class="line"></span><br><span class="line">p<span class="id">#largetext</span>                     <span class="number">1</span>-<span class="number">0</span>-<span class="number">1</span>特指度 = <span class="number">101</span></span><br><span class="line"></span><br><span class="line"><span class="tag">body</span> p<span class="id">#largetext</span>                <span class="number">1</span>-<span class="number">0</span>-<span class="number">2</span>特指度 = <span class="number">102</span></span><br><span class="line"></span><br><span class="line"><span class="tag">body</span> p<span class="id">#largetext</span> <span class="tag">ul</span><span class="class">.mylist</span>      <span class="number">1</span>-<span class="number">1</span>-<span class="number">3</span>特指度 = <span class="number">113</span></span><br><span class="line"></span><br><span class="line"><span class="tag">body</span> p<span class="id">#largetext</span> <span class="tag">ul</span><span class="class">.mylist</span> <span class="tag">li</span>   <span class="number">1</span>-<span class="number">1</span>-<span class="number">4</span>特指度 = <span class="number">114</span></span><br></pre></td></tr></table></figure>
+<p>此时，每个选择符都比前一个选择符的特指度更高。</p>
+<p>注意，特指度是针对某个具体元素来算的，如果多个选择符用逗号组合在一起，则单独计算每个逗号的部分。</p>
+<hr>
+
+<p><strong>查理版</strong>简单层叠要点</p>
+<p>在这个查理版里，只要记住三条规则就够了。这三条规则适合所有情况。</p>
+<p>规则一：包含ID的选择符胜过于包含类的选择符，包含类的选择符胜过包含标签名的选择符。</p>
+<p>规则二：如果几个不同来源都为同一个标签的容一个属性设定了样式，行内样式胜过嵌入样式，嵌入样式胜过链接样式。在链接的样式表中 ，具有相同特指度的样式，后声明的胜过先声明的。</p>
+<p>规则一胜过规则二。换句话说，如果选择符更明确（特指度更高），无论 它在哪里，都会胜出。</p>
+<p>规则三：设定的样式胜过继承的样式，此时不容考虑特指度（即显示设定优先）。</p>
+<p>下面简单解释一下规则三。比如下面的标记</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">div</span> <span class="property">id</span> = <span class="string">"cascade_demo"</span>&gt;</span><br><span class="line">    &lt;p <span class="property">id</span> = <span class="string">"inheritance_fact"</span>&gt;Inheritance <span class="keyword">is</span> &lt;em&gt;weak&lt;/em&gt; <span class="keyword">in</span> <span class="keyword">the</span> Cascade&lt;/p&gt;</span><br><span class="line">&lt;/<span class="keyword">div</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>和下面的规则<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">div</span><span class="id">#cascade_demo</span> <span class="tag">p</span><span class="id">#inheritance_fact</span> <span class="rules">&#123;<span class="rule"><span class="attribute">color</span>:<span class="value">blue</span></span>;&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>2 - 0 - 2 （高特指度）</p>
+<p>会导致单词<code>weak</code>变成蓝色，因为它从父元素<code>p</code>那里继承了这个颜色值。</p>
+<p>但是，只要我们再给em添加一条规则<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">em</span> <span class="rules">&#123;<span class="rule"><span class="attribute">color</span>:<span class="value">red</span></span>;&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>0 - 0 - 1 （低特指度）</p>
+<p>em就会变成红色，因为，虽然它的特指度低（0-0-1），但em继承的颜色值，会被它明确（显示）指定的颜色值覆盖，就算（隐式）遗传该颜色值的规则的特指度高（2-0-2）也没有用。</p>
+<hr>
+
+<p><strong>@Import</strong></p>
+<p>除了以上三种为页面添加样式的方法，还有一种在样式表中链接其他样式表的方法。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="at_rule">@import</span> <span class="function"><span class="title">url</span><span class="params">(test.css)</span></span></span><br></pre></td></tr></table></figure>
+<p>要注意的是:</p>
+<ol>
+<li><p>@import指令必须出现在样式表中其他样式之前，否则@import引用的样式表不会被加载。</p>
+</li>
+<li><p>@import放在嵌入样式中(页面中<code>&lt;script&gt;</code>标签中)，至于页面中有几个嵌入样式，没所谓。</p>
+</li>
+<li><p>把@import导入的样式当做嵌入样式中普通样式就行，后者覆盖前者，特指度计算跟嵌入样式规则相同。</p>
+</li>
+</ol>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/"> #CSS </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2014/10/11/定位元素/">
+                定位元素
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2014-10-11
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/CSS/">CSS</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h3 id="定位的类型">定位的类型</h3><ol>
+<li><code>static</code></li>
+<li><code>relative</code></li>
+<li><code>absolute</code>元素框从文档流中完全删除，并相对于其包含块定位，包含块可能是文档中的另一个元素或者是初始包含块。元素原先在正常文档流中所占的空间会关闭，就好像该元素原来不存在一样。元素定位后生成一个块级框，而不论原来它在正常流中生成何种类型的框。</li>
+<li><code>fixed</code>元素框的表现类似于将position设置为absolute，不过其包含块是视窗本身。</li>
+</ol>
+<h3 id="包含块">包含块</h3><p>对于浮动元素，其包含块定义为最近的块级祖先元素。对于定位元素，情况没有那么简单。</p>
+<p><strong>根元素</strong>的包含块（也称为初始化包含块）由用户代理建立。在HTML中，根元素就是HTML元素，不过有些浏览器会使用body作为根元素。在大多数浏览器中，初始化包含块是一个视窗大小的矩形。</p>
+<p>对于一个非根元素，如果其<code>position</code>值是<code>relative</code>或<code>static</code>，包含块则由最近的块级框、表单元格或行内块祖先框的内容边界构成。</p>
+<p>对于一个非根元素，如果其<code>position</code>值是<code>absolute</code>，包含块设置为最近的<code>position</code>值不是<code>static</code>的祖先元素（可以使任何类型）。这个过程如下：</p>
+<ol>
+<li><p>如果这个祖先是块级元素，包含块则设置为该元素的边框界定的区域</p>
+</li>
+<li><p>如果这个祖先是行内元素，包含块则设置为该祖先元素的内容边界。</p>
+</li>
+<li><p>如果没有祖先，元素的包含块就定义为初始化包含块。</p>
+</li>
+</ol>
+<p><strong>包含块——“浮动相对的是内容区域，定位相对的是边框边界界定的区域”</strong></p>
+<p>元素可以定位到其包含块的外面。这与浮动元素使用负外边距浮动到其父元素内容区外面很类似。这也说明，“包含块”一词实际上应该是“定位上下文”。</p>
+<h3 id="非替换元素的放置和大小">非替换元素的放置和大小</h3><p>元素的大小取决于其包含块。</p>
+<p>考虑一个定位元素的宽度和水平放置。这可以表示为一个等式：left+margin-left+border-left-width+padding-left+width+padding-right、border-right-width+margin-right+right=包含块的width。注意这个包含块width的具体含义，浮动和定位是不同的。</p>
+<ol>
+<li><p>元素display设置为absolute后生成一个块级框，类似于元素float设置为浮动，也会生成一个块级框，而且元素的width设置为“收放得正好合适”。</p>
+</li>
+<li><p>元素left和right设置为固定值时，左右外边距分别设置为auto可以达到左右居中的效果；元素top和bottom设置为固定时，上下外边距分别设置为auto也可达到上下居中的效果。</p>
+</li>
+<li><p>元素过度受限时，客户代理重置的顺序为right、margin-right（水平），bottom、margin-bottom（垂直）。</p>
+</li>
+<li><p>垂直方向与水平方向上类似。</p>
+</li>
+</ol>
+<h3 id="替换元素的放置和大小">替换元素的放置和大小</h3><p>替换元素有固有的高度和宽度，因此其大小不会改变，除非创作人员有意显式地修改。因此，在替换元素中没有“恰当收放”行为的概念。其余情况跟上述类似。</p>
+<h3 id="Z轴上的放置">Z轴上的放置</h3><p>z-index和top、bottom、left、right一样，是定位元素才有的概念。</p>
+<h3 id="固定元素">固定元素</h3><p>固定元素与绝对定位很类似，只不过固定元素的包含块是视窗。固定定位时，元素会完全从文档流中去除，不会有相对于文档中任何部分的位置。</p>
+<h3 id="相对定位">相对定位</h3><p>相对定位更多的应用于为绝对定位设置定位上下文。</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/"> #CSS </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2014/10/10/浮动元素/">
+                浮动元素
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2014-10-10
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/CSS/">CSS</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>正常流会忽视浮动元素和定位元素（absolute、fixed），不过浮动元素和定位元素会与其在正常流中的父元素（浮动-包含块，定位-position值为relative）有互动。</p>
+<p>正常流虽然会忽视浮动元素，但匿名文本和行内元素（包括替换和非替换）却不会，而且浮动元素的外边距也会对其产生影响。浮动元素会生成一个块级框嘛。</p>
+<ol>
+<li><p>浮动元素周围的外边距不会合并。如果其他元素与此浮动元素相邻（这表示水平相邻和垂直相邻，与正常流中垂直相邻块级元素外边距合并相对应），而且这些元素也有外边距，那么这些外边距不会与浮动元素的外边距合并。</p>
+</li>
+<li><p>浮动元素没有指明width值时，会自动缩短以适应文本内容，比如标签<code>&lt;p&gt;</code>中的文本。</p>
+</li>
+</ol>
+<h2 id="浮动的详细内幕">浮动的详细内幕</h2><p>深入讨论浮动的详细内容之前，首先要建立包含块（containning block）的概念，这个很重要。浮动元素的包含块是最近的块级元素祖先。</p>
+<p>浮动元素会生成一个块级框，而不论这个元素本身是什么。因此，如果让一个链接浮动，即使该链接元素本身是一个行内元素，通常会生成一个行内框，但只要它是浮动的，就会生成一个块级框。它会像会计元素一样摆放和表现（就好像一个div、p元素一样）。对浮动元素声明display:block也不是不可以，不过没有必要这么做。</p>
+<p>规则如下：（以float:left为例，right与此对应）</p>
+<ol>
+<li><p>浮动元素的左外边界不能超出其包含块的左内边界。</p>
+</li>
+<li><p>浮动元素的左外边界必须是源文档中之前出现的左浮动元素的右外边界，除非后出现浮动元素的顶端在先出现浮动元素的底端下面。</p>
+</li>
+</ol>
+<p>解释：这条规则可以防止浮动元素彼此覆盖。想覆盖的话可以使用负外边距。这个规则的好处是，所有浮动内容都是可见的，因为你不必担心一个浮动元素与另一个浮动元素重叠。这使得浮动元素很安全。使用定位时情况则完全不同，定位很容易导致元素相互覆盖。</p>
+<ol>
+<li><p>左浮动元素的右外边界不会在其右边右浮动元素的左外边界的右边。说的很拗口，其实就是防止浮动元素相互重叠。</p>
+</li>
+<li><p>一个浮动元素的顶端不能比其父元素的内顶端更高，也不能比其源文档中在其上的块级元素的下外边界更高。并且此块级元素的下外边距不会和浮动元素的上外边距叠加。</p>
+</li>
+<li><p>浮动元素的顶端不能比之前所有浮动元素或块级元素的顶端更高。与4类似。</p>
+</li>
+<li><p>假设一个段落的正中间有一个浮动图像。这个图像顶端最高只能放在该图像所在行框（段落）的顶端。</p>
+</li>
+<li><p>浮动元素不能超出其包含元素的边界，除非包含元素太窄。</p>
+</li>
+<li><p>浮动元素必须尽可能高的放置。</p>
+</li>
+<li><p>浮动元素必须向左尽可能远。规则8优先于规则9。</p>
+</li>
+</ol>
+<h2 id="负外边距">负外边距</h2><p>如果将外边距设置为负值，内容就会超出外边界。但div下的两个p同时向左浮动，对第一个p设置负外边距，随着负外边距绝对值增大，第二个p会向左移动，但即使负外边距绝对值足够大，也不能将第二个p拖出div。</p>
+<h2 id="浮动元素、内容和重叠">浮动元素、内容和重叠</h2><p>正常流会忽视浮动元素和定位元素，不过浮动元素和定位元素会与其在正常流中的父元素（浮动-包含块，定位-position值为relative）有互动。</p>
+<p>正常流虽然会忽视浮动元素，但匿名文本和行内元素（包括替换和非替换）却不会，而且浮动元素的外边距也会对其产生影响。浮动元素会生成一个块级框嘛。</p>
+<p>如果一个浮动元素在内容流过的边上有负外边距。对行内元素的影响。</p>
+<ol>
+<li><p>行内框（span）与一个浮动元素重叠时，其边框、背景和内容都在该浮动元素“之上显示”。 </p>
+</li>
+<li><p>块框与一个浮动元素重叠时，其边框和背景在该浮动元素“之下”显示，而内容在浮动元素“之上”显示。</p>
+</li>
+</ol>
+<h2 id="清除">清除</h2><p>clear工作如下，它会增加元素的上外边距，使之最后落在浮动元素的下面，这实际上会忽略为清除元素（设置了clear的元素）顶端设置的外边距宽度。也就是说，清除元素的上外边距可能会调整将元素下移足够远（使内容区在浮动元素下边界的下面）所需的任何长度。</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/"> #CSS </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
   </div>
 
   
+  <div class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
+  </div>
+
 
         </div>
       </div>
@@ -652,7 +1110,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -666,7 +1124,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -706,7 +1164,7 @@
       <div class="footer-inner">
         <div class="copyright">
   
-  &copy; &nbsp; 
+  &copy; &nbsp;  2014 - 
   2015
   <span class="with-love">
     <i class="icon-heart"></i>

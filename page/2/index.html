@@ -110,6 +110,114 @@
           
           
             
+              <a class="post-title-link" href="/2014/10/08/行内元素/">
+                行内元素
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2014-10-08
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/CSS/">CSS</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h2 id="基本术语和概念">基本术语和概念</h2><h3 id="匿名文本">匿名文本</h3><p>匿名文本是指所有未包含在行内元素中的字符串。注意，空格也是匿名文本的一部分，因为空格与其他字符一样都是正常的字符。</p>
+<h3 id="em框">em框</h3><p>在CSS中，font-size的值确定了（等于）各个em框的高度。</p>
+<h3 id="内容区">内容区</h3><p>在非替换元素中，内容区是元素中各字符的em框串一起构成的框；在替换元素中，内容区是元素固有高度加上可能有的外边距、边框或内边距。</p>
+<h3 id="行间距">行间距</h3><p>行间距是font-size值和line-height值之差。这个差实际上要分为等分为两半，分别应用到内容区的顶部和底部。行间距只应用于非替换元素。</p>
+<h3 id="行内框">行内框</h3><p>这个框通过向内容区增加行间距来描述。对于非替换元素，元素行内框的高度刚好等于line-height的值。对于替换元素，元素行内框的高度则恰好等于内容区的高度，因为行间距不应用到替换元素。</p>
+<h3 id="行框">行框</h3><p>这是包含该行中出现的行内框的最高点和最低点的最小框。换句话说，行框的上边界要位于最高行内框的上边界，而行框的下边界要放在最低行内框的下边界。在<code>&lt;p&gt;</code>标签中行框高度即是标签的内容区的height为auto时对应的值。</p>
+<p>注意：行内框在行中根据其vertical-align属性值对齐。</p>
+<h2 id="如何逐步构造一个行框">如何逐步构造一个行框</h2><ol>
+<li>按照以下步骤确定行中个元素行内框的高度：<ul>
+<li>得到各行内非替换元素以及不属于后代行内元素的所有文本（匿名文本）的所有font-size值和line-height值，再将line-height减去font-size，这就得到了框的行间距。这个行间距除以2（得到半间距），将其分别应用到em框的顶部和底部。对行内非替换元素而言，行内框的高度值就是line-height的值。</li>
+<li>得到各替换元素的height、margin-top、border-top-width、padding-top、padding-bottom、border-bottom-width和margin-bottom值，把它们加在一起。</li>
+</ul>
+</li>
+<li><p>对于各内容区，确定它在整行基线的上方和下方分别超出多少。这个任务并不容易：你必须知道各元素及匿名文本各部分的基线的位置（基线在各em框中的位置对于不同的字体是不同的），还要知道该行本身基线的位置；然后把它们对齐。另外，对于替换元素，要将其底边放在整行的基线上。</p>
+</li>
+<li><p>对于指定了vertical-align值得元素，确定其垂直偏移量，由此可知该元素的行内框要向上或者向下移动多远（会影响行框高度），并改变元素在行基线上方或下方的超出的距离。</p>
+</li>
+<li><p>既然已经知道了所有行内框会放在哪里，再来计算最后的行框高度。为此，只需要将基线与最高行内框顶端之间的距离加上基线与最低行内框底端之间的距离。</p>
+</li>
+</ol>
+<h2 id="行内替换元素">行内替换元素</h2><p>一般认为行内替换元素（如图像）有固有的高度和宽度；例如，一个图像的高度和宽度可能是某个像素数。因此，有固定高度的替换元素可能导致行框比正常要高。这不会改变行中任何元素的line-height值，包括替换元素本身。相反，只是会让行框的高度恰好能包含替换元素（以及所有框属性）。换句话说，会用替换元素整体（包括内容、外边距、边距和内边距）来定义元素的行内框。</p>
+<p>尽管line-height对替换元素行内框没有任何影响，替换元素还是有一个line-height值。这是为什么呢？在最常见的情况下，行内替换元素需要这个值，从而在垂直对齐时能正确地定位元素。例如，要记住，vertical-align的百分数值要相对于元素的line-height来计算。</p>
+<p>负外边距是使行内替换元素挤入其他行的唯一办法。</p>
+<h2 id="基线问题">基线问题</h2><ol>
+<li><p>默认情况下，匿名文本和行内非替换元素位于同一条基线（baseline）上，而行内替换元素的行内框的下边界也位于这条基线上。</p>
+</li>
+<li><p>对行内替换元素使用text-top（text-bottom）时，将行内替换元素与匿名文本内容区（默认等于行内非替换元素内容区）的顶端（底端）对齐。</p>
+</li>
+</ol>
+<h2 id="display改变元素显示">display改变元素显示</h2><p>你改变只是元素的显示，而不是其本质。换句话说，通过display让一个段落生成行内框并不会把这个段落真正变成一个行内元素。但其实，现在行内元素包含块级元素是可以的，比如</p><p>标签外面套一层<a>标签。</a></p>
+<h2 id="行内块元素">行内块元素</h2><p>行内块元素是块级元素和行内元素的混合。行内块元素作为一个行内框与其他元素和内容相关。换句话说，它就像图像一样放在一个文本行中，实际上，行内快元素会作为替换元素放在行中（也就是说，行内块的padding、margin、border会影响自身的行内框的高度，从而影响整体行框的高度。与行内非替换元素只影响水平方向相对应），而且内部没有行分隔符。</p>
+<p>在行内块元素内部，会像块级元素一样设置内容的格式。就像所有块级或行内替换元素一样，行内块元素也有属性width和height，如果比周围内容高，这些属性会使行高增加。</p>
+<p>行内非替换元素元素不能应用width和text-align属性，直接忽略。元素框会收缩以适应内容。行内块元素则有这两个属性，因为它作为一个块级元素被格式化。如果行内块元素的width未定义，或者显示声明为auto，元素框会收缩以适应内容。</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/"> #CSS </a>
+          
+        </div>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2014/10/08/基本视觉格式化/">
                 基本视觉格式化
               </a>
@@ -243,7 +351,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -257,7 +365,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
