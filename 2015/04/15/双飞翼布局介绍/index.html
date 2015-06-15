@@ -162,7 +162,6 @@
 <p>显示如下：<br><img src="http://7ximbf.com1.z0.glb.clouddn.com/20150415/5.PNG" alt="Alt 5" title="5"><br>正如你所看见的，它只是三个块浮动并列在一起而已。<br>下面设置<code>.sub</code>负边距为<code>-700px</code>给左边的<code>.main</code>腾出<code>700px</code>宽的空间<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.main</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">700px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.sub</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">700px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.extra</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="comment">/*margin-left: -190px;*/</span></span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
 <p>得到效果图：<br><img src="http://7ximbf.com1.z0.glb.clouddn.com/20150415/6.PNG" alt="Alt 6" title="6"><br>由于.main位于.extra的文档流上方，所以.extra没有贴着.sub到达左边，而是紧挨着.main左边。<br>所以此时只需将.extra左边距设置为-190px就能使得自己向左移动190px，从而达到想要的效果。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.main</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">700px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.sub</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">700px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.extra</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">190px</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
 <p>效果如下：<br><img src="http://7ximbf.com1.z0.glb.clouddn.com/20150415/7.PNG" alt="Alt 7" title="7"><br>width: 100%表示元素的width等于包含块的width，其实就是包含块的距离。与width: 700px; 实际表示的意思相同。</p>
-
       
     </div>
 
@@ -242,7 +241,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -256,7 +255,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -307,7 +306,7 @@
       <div class="footer-inner">
         <div class="copyright">
   
-  &copy; &nbsp; 
+  &copy; &nbsp;  2014 - 
   2015
   <span class="with-love">
     <i class="icon-heart"></i>
