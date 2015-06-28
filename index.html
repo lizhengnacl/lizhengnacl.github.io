@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="theme-next use-motion theme-next-mist">
 <head>
-  
+
 
 <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -33,8 +33,8 @@
 </head>
 
 <body>
-  <div class="container one-column 
-   page-home 
+  <div class="container one-column
+   page-home
 ">
     <div class="headband"></div>
 
@@ -53,40 +53,40 @@
 
 
   <ul id="menu" class="menu">
-     
-    
-      
+
+
+
       <li class="menu-item menu-item-home">
         <a href="/">
           <i class="menu-item-icon icon-home"></i> <br />
           首页
         </a>
       </li>
-    
-      
+
+
       <li class="menu-item menu-item-categories">
         <a href="/categories">
           <i class="menu-item-icon icon-categories"></i> <br />
           分类
         </a>
       </li>
-    
-      
+
+
       <li class="menu-item menu-item-archives">
         <a href="/archives">
           <i class="menu-item-icon icon-archives"></i> <br />
           归档
         </a>
       </li>
-    
-      
+
+
       <li class="menu-item menu-item-tags">
         <a href="/tags">
           <i class="menu-item-icon icon-tags"></i> <br />
           标签
         </a>
       </li>
-    
+
   </ul>
 
 
@@ -96,59 +96,59 @@
     <div id="main" class="main">
       <div class="main-inner">
         <div id="content" class="content">
-          
+
   <div id="posts" class="posts-expand">
-    
-      
+
+
 
   <div class="post post-type-normal ">
     <div class="post-header">
 
-      
-      
+
+
         <h1 class="post-title">
-          
-          
-            
+
+
+
               <a class="post-title-link" href="/2015/06/15/requirejs/">
                 requireJS
               </a>
-            
-          
+
+
         </h1>
-      
+
 
       <div class="post-meta">
         <span class="post-time">
           发表于 2015-06-15
         </span>
 
-        
+
           <span class="post-category">
             &nbsp; | &nbsp; 分类于
-            
+
               <a href="/categories/JavaScript/">JavaScript</a>
 
-              
-              
 
-            
+
+
+
           </span>
-        
 
-        
-          
-        
+
+
+
+
       </div>
     </div>
 
     <div class="post-body">
 
-      
-      
 
-      
-        
+
+
+
+
           <p>最近看到阮一峰老师的关于<a href="http://www.ruanyifeng.com/blog/2012/10/javascript_module.html" target="_blank" rel="external">模块化编程</a>的博文，对老师的叙事能力佩服到五体投地，这是我见过的关于前端模块化最易懂的解读。</p>
 <p>前段时间项目中用到requireJS，现总结下在实际操作中是如何使用的，方便日后查询。</p>
 <h2 id="目录结构如下所示：">目录结构如下所示：</h2><p><img src="http://7ximbf.com1.z0.glb.clouddn.com/20150615/1.png" alt="scaffold"></p>
@@ -185,82 +185,82 @@
 <li>在根目录下运行命令<code>node r.js -o build.js</code></li>
 </ol>
 
-        
-      
+
+
     </div>
 
     <div class="post-footer">
-      
+
         <div class="post-tags">
-          
+
             <a href="/tags/AMD/"> #AMD </a>
-          
+
             <a href="/tags/CommonJS/"> #CommonJS </a>
-          
+
         </div>
-      
 
-      
 
-      
-      
+
+
+
+
         <div class="post-eof"></div>
-      
+
     </div>
   </div>
 
 
-    
-      
+
+
 
   <div class="post post-type-normal ">
     <div class="post-header">
 
-      
-      
+
+
         <h1 class="post-title">
-          
-          
-            
+
+
+
               <a class="post-title-link" href="/2015/04/19/Regexp/">
                 Regexp
               </a>
-            
-          
+
+
         </h1>
-      
+
 
       <div class="post-meta">
         <span class="post-time">
           发表于 2015-04-19
         </span>
 
-        
+
           <span class="post-category">
             &nbsp; | &nbsp; 分类于
-            
+
               <a href="/categories/JavaScript/">JavaScript</a>
 
-              
-              
 
-            
+
+
+
           </span>
-        
 
-        
-          
-        
+
+
+
+
       </div>
     </div>
 
     <div class="post-body">
 
-      
-      
 
-      
-        
+
+
+
+
           <figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> greeting = 'my name <span class="keyword">is</span> $&#123;name&#125;, age $&#123;age&#125;, name <span class="keyword">is</span> $&#123;name&#125;',</span><br><span class="line">    re = /\$\&#123;(\w+)\&#125;/g,</span><br><span class="line">    obj = &#123;name : 'liz', age : <span class="number">23</span>&#125;,</span><br><span class="line">    <span class="literal">result</span>;</span><br><span class="line"><span class="keyword">while</span>(<span class="literal">result</span> = re.exec(greeting))&#123;</span><br><span class="line">    greeting = greeting.replace(<span class="literal">result</span>[<span class="number">0</span>], obj[<span class="literal">result</span>[<span class="number">1</span>]]);</span><br><span class="line">    console.log(<span class="literal">result</span>);</span><br><span class="line">    console.log(re.lastIndex)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>执行后的结果分别为<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">"$&#123;name&#125;"</span>, <span class="string">"name"</span>, index: <span class="number">11</span>, input: <span class="string">"my name is $&#123;name&#125;, age $&#123;age&#125;, name is $&#123;name&#125;"</span>]</span><br><span class="line">[<span class="string">"$&#123;age&#125;"</span>, <span class="string">"age"</span>, index: <span class="number">20</span>, input: <span class="string">"my name is liz, age $&#123;age&#125;, name is $&#123;name&#125;"</span>]</span><br><span class="line">[<span class="string">"$&#123;name&#125;"</span>, <span class="string">"name"</span>, index: <span class="number">32</span>, input: <span class="string">"my name is liz, age 23, name is $&#123;name&#125;"</span>]</span><br></pre></td></tr></table></figure></p>
 <p>结果数组中包含四项：</p>
@@ -276,163 +276,163 @@
 <li>^因子仅匹配re.lastIndex为0的情况。</li>
 </ol>
 
-        
-      
+
+
     </div>
 
     <div class="post-footer">
-      
+
         <div class="post-tags">
-          
+
             <a href="/tags/function/"> #function </a>
-          
+
             <a href="/tags/regexp-exec-string/"> #regexp.exec(string) </a>
-          
+
         </div>
-      
 
-      
 
-      
-      
+
+
+
+
         <div class="post-eof"></div>
-      
+
     </div>
   </div>
 
 
-    
-      
+
+
 
   <div class="post post-type-normal ">
     <div class="post-header">
 
-      
-      
+
+
         <h1 class="post-title">
-          
-          
-            
+
+
+
               <a class="post-title-link" href="/2015/04/19/JSONP/">
                 JSONP
               </a>
-            
-          
+
+
         </h1>
-      
+
 
       <div class="post-meta">
         <span class="post-time">
           发表于 2015-04-19
         </span>
 
-        
+
           <span class="post-category">
             &nbsp; | &nbsp; 分类于
-            
+
               <a href="/categories/JavaScript/">JavaScript</a>
 
-              
-              
 
-            
+
+
+
           </span>
-        
 
-        
-          
-        
+
+
+
+
       </div>
     </div>
 
     <div class="post-body">
 
-      
-      
 
-      
-        
+
+
+
+
           <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">addScript</span><span class="params">(url)</span></span>&#123;</span><br><span class="line">        <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">        script.src = url;</span><br><span class="line">        <span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>].appendChild(script);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">liz</span><span class="params">(obj)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> obj)&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(obj[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> url = <span class="string">'http://www.lizweb.me/case/test.php?a=liz'</span>;</span><br><span class="line">    addScript(url);</span><br><span class="line">    </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">&lt;?php</span></span><br><span class="line">    <span class="variable">$result</span>=<span class="string">"&#123;'name':'liz','age':23&#125;"</span>;  </span><br><span class="line">    <span class="variable">$callback</span>=<span class="variable">$_GET</span>[<span class="string">'a'</span>];   </span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$callback</span>.<span class="string">"($result)"</span>;</span><br><span class="line"><span class="preprocessor">?&gt;</span></span><br></pre></td></tr></table></figure>
 <p>请求地址变量<code>url</code>提供的回调函数的名称为<code>liz</code>与函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">liz</span><span class="params">(obj)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> obj)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(obj[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>相对应。<br>请求地址变量<code>url</code>中<code>?a=liz</code>的变量名a与服务器代码<code>$callback=$_GET[‘a’];</code>相对应。<br>代码<code>echo $callback.”($result)”;</code>与<code>liz(obj)</code>相对应。<br><br><br>获取公共API</p>
 
-        
-      
+
+
     </div>
 
     <div class="post-footer">
-      
+
         <div class="post-tags">
-          
+
             <a href="/tags/JSONP/"> #JSONP </a>
-          
+
             <a href="/tags/跨域请求/"> #跨域请求 </a>
-          
+
         </div>
-      
 
-      
 
-      
-      
+
+
+
+
         <div class="post-eof"></div>
-      
+
     </div>
   </div>
 
 
-    
-      
+
+
 
   <div class="post post-type-normal ">
     <div class="post-header">
 
-      
-      
+
+
         <h1 class="post-title">
-          
-          
-            
+
+
+
               <a class="post-title-link" href="/2015/04/15/双飞翼布局介绍/">
                 负边距
               </a>
-            
-          
+
+
         </h1>
-      
+
 
       <div class="post-meta">
         <span class="post-time">
           发表于 2015-04-15
         </span>
 
-        
+
           <span class="post-category">
             &nbsp; | &nbsp; 分类于
-            
+
               <a href="/categories/CSS/">CSS</a>
 
-              
-              
 
-            
+
+
+
           </span>
-        
 
-        
-          
-        
+
+
+
+
       </div>
     </div>
 
     <div class="post-body">
 
-      
-      
 
-      
-        
+
+
+
+
           <p>这个<a href="http://www.dqqd.me/flying-wing/" target="_blank" rel="external">链接</a>(建议先看链接)是淘宝UED关于双飞翼布局的介绍。看了之后，觉得太棒了。<br>但感觉对新手不太友好，比如以下代码，你能很直观的感受到为什么要这么用么？<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.sub</span> <span class="rules">&#123;       </span><br><span class="line">   <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;        </span><br><span class="line">   <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;        </span><br><span class="line">   <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">100%</span></span></span>;    </span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
 <p>是的，我打算以负边距为切入口把这个问题重新整理一遍。</p>
 <p><hr><br>仔细分析各种布局的技术实现，可以发现下面三种技术被经常使用：</p>
@@ -452,158 +452,158 @@
 <p>得到效果图：<br><img src="http://7ximbf.com1.z0.glb.clouddn.com/20150415/6.PNG" alt="Alt 6" title="6"><br>由于.main位于.extra的文档流上方，所以.extra没有贴着.sub到达左边，而是紧挨着.main左边。<br>所以此时只需将.extra左边距设置为-190px就能使得自己向左移动190px，从而达到想要的效果。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.main</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">700px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.sub</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">700px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.extra</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">190px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">190px</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
 <p>效果如下：<br><img src="http://7ximbf.com1.z0.glb.clouddn.com/20150415/7.PNG" alt="Alt 7" title="7"><br>width: 100%表示元素的width等于包含块的width，其实就是包含块的距离。与width: 700px; 实际表示的意思相同。</p>
 
-        
-      
+
+
     </div>
 
     <div class="post-footer">
-      
+
         <div class="post-tags">
-          
+
             <a href="/tags/负边距/"> #负边距 </a>
-          
+
         </div>
-      
 
-      
 
-      
-      
+
+
+
+
         <div class="post-eof"></div>
-      
+
     </div>
   </div>
 
 
-    
-      
+
+
 
   <div class="post post-type-normal ">
     <div class="post-header">
 
-      
-      
+
+
         <h1 class="post-title">
-          
-          
-            
+
+
+
               <a class="post-title-link" href="/2015/04/15/可拖动/">
                 可拖动
               </a>
-            
-          
+
+
         </h1>
-      
+
 
       <div class="post-meta">
         <span class="post-time">
           发表于 2015-04-15
         </span>
 
-        
+
           <span class="post-category">
             &nbsp; | &nbsp; 分类于
-            
+
               <a href="/categories/HTML5/">HTML5</a>
 
-              
-              
 
-            
+
+
+
           </span>
-        
 
-        
-          
-        
+
+
+
+
       </div>
     </div>
 
     <div class="post-body">
 
-      
-      
 
-      
-        
+
+
+
+
           <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>);</span><br><span class="line"><span class="keyword">var</span> context = canvas.getContext(<span class="string">'2d'</span>);</span><br><span class="line"><span class="keyword">var</span> circles = [];</span><br><span class="line"><span class="comment">// 记录先前被选中的元素</span></span><br><span class="line"><span class="keyword">var</span> prevElement = <span class="literal">null</span>;</span><br><span class="line"><span class="comment">// 记录拖动的状态</span></span><br><span class="line"><span class="keyword">var</span> isDrawing = <span class="literal">false</span>;</span><br><span class="line">context.globalAlpha = <span class="number">0.5</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Circle</span><span class="params">(x, y, radius, color)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.x = x;</span><br><span class="line">    <span class="keyword">this</span>.y = y;</span><br><span class="line">    <span class="keyword">this</span>.radius = radius;</span><br><span class="line">    <span class="keyword">this</span>.color = color;</span><br><span class="line">    <span class="keyword">this</span>.selected = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addCircle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = randomFromTo(<span class="number">0</span>, canvas.width);</span><br><span class="line">    <span class="keyword">var</span> y = randomFromTo(<span class="number">0</span>, canvas.height);</span><br><span class="line">    <span class="keyword">var</span> radius = randomFromTo(<span class="number">10</span>, <span class="number">60</span>);</span><br><span class="line">    <span class="keyword">var</span> colors = [<span class="string">'green'</span>, <span class="string">'black'</span>, <span class="string">'red'</span>, <span class="string">'pink'</span>];</span><br><span class="line">    <span class="keyword">var</span> color = colors[randomFromTo(<span class="number">0</span>, <span class="number">3</span>)];</span><br><span class="line">    <span class="keyword">var</span> circle = <span class="keyword">new</span> Circle(x, y, radius, color);</span><br><span class="line">    circles.push(circle);</span><br><span class="line">    drawCircle();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">randomFromTo</span><span class="params">(x, y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * (y - x + <span class="number">1</span>) + x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">drawCircle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    context.clearRect(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</span><br><span class="line">    <span class="keyword">var</span> circle;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; circles.length; i += <span class="number">1</span>) &#123;</span><br><span class="line">        circle = circles[i];</span><br><span class="line">        context.beginPath();</span><br><span class="line">        context.arc(circle.x, circle.y, circle.radius, <span class="number">0</span>, <span class="built_in">Math</span>.PI * <span class="number">2</span>);</span><br><span class="line">        context.fillStyle = circle.color;</span><br><span class="line">        context.fill();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> timer = setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    addCircle();</span><br><span class="line">    <span class="keyword">if</span> (circles.length &gt; <span class="number">100</span>) &#123;</span><br><span class="line">        clearInterval(timer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, <span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">canvas.onmousedown = clickCircle;</span><br><span class="line">canvas.onmousemove = draw;</span><br><span class="line">canvas.onmouseup = stopDrawing;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clickCircle</span><span class="params">(e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = e.pageX - canvas.offsetLeft;</span><br><span class="line">    <span class="keyword">var</span> y = e.pageY - canvas.offsetTop;</span><br><span class="line">    <span class="keyword">var</span> circle;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; circles.length; i += <span class="number">1</span>) &#123;</span><br><span class="line">        circle = circles[i];</span><br><span class="line">        <span class="keyword">var</span> len = <span class="built_in">Math</span>.sqrt(<span class="built_in">Math</span>.pow(circle.x - x, <span class="number">2</span>) + <span class="built_in">Math</span>.pow(circle.y - y, <span class="number">2</span>));</span><br><span class="line">        <span class="keyword">if</span> (len &lt;= circle.radius) &#123;</span><br><span class="line">            circle.selected = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (prevElement !== <span class="literal">null</span>) &#123;</span><br><span class="line">                prevElement.selected = <span class="literal">false</span>;</span><br><span class="line">                prevElement.radius -= <span class="number">5</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 点击为拖动的前置动作。</span></span><br><span class="line">            isDrawing = <span class="literal">true</span>;</span><br><span class="line">            prevElement = circle;</span><br><span class="line">            prevElement.radius += <span class="number">5</span>;</span><br><span class="line">            <span class="comment">// break;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    drawCircle();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">draw</span><span class="params">(e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (isDrawing === <span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> x = e.pageX - canvas.offsetLeft;</span><br><span class="line">        <span class="keyword">var</span> y = e.pageY - canvas.offsetTop;</span><br><span class="line">        prevElement.x = x;</span><br><span class="line">        prevElement.y = y;</span><br><span class="line">        drawCircle();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopDrawing</span><span class="params">()</span></span>&#123;</span><br><span class="line">    isDrawing = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        
-      
+
+
     </div>
 
     <div class="post-footer">
-      
+
         <div class="post-tags">
-          
+
             <a href="/tags/canvas/"> #canvas </a>
-          
+
             <a href="/tags/demo/"> #demo </a>
-          
+
         </div>
-      
 
-      
 
-      
-      
+
+
+
+
         <div class="post-eof"></div>
-      
+
     </div>
   </div>
 
 
-    
-      
+
+
 
   <div class="post post-type-normal ">
     <div class="post-header">
 
-      
-      
+
+
         <h1 class="post-title">
-          
-          
-            
+
+
+
               <a class="post-title-link" href="/2015/04/13/BST/">
                 二叉查找树
               </a>
-            
-          
+
+
         </h1>
-      
+
 
       <div class="post-meta">
         <span class="post-time">
           发表于 2015-04-13
         </span>
 
-        
+
           <span class="post-category">
             &nbsp; | &nbsp; 分类于
-            
+
               <a href="/categories/数据结构算法/">数据结构算法</a>
 
-              
-              
 
-            
+
+
+
           </span>
-        
 
-        
-          
-        
+
+
+
+
       </div>
     </div>
 
     <div class="post-body">
 
-      
-      
 
-      
-        
+
+
+
+
           <h1 id="二叉查找树">二叉查找树</h1><h2 id="构建二叉查找树">构建二叉查找树</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">BST</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.root = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">this</span>.insert = insert;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Node</span><span class="params">(data, left, right)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.data = data;</span><br><span class="line">    <span class="keyword">this</span>.left = left;</span><br><span class="line">    <span class="keyword">this</span>.right = right;</span><br><span class="line">    <span class="keyword">this</span>.num = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">function insert(<span class="built_in">data</span>) &#123;</span><br><span class="line">    <span class="built_in">var</span> n <span class="subst">=</span> <span class="literal">new</span> Node(<span class="built_in">data</span>, <span class="built_in">null</span>, <span class="built_in">null</span>)</span><br><span class="line">    <span class="keyword">if</span> (this<span class="built_in">.</span>root <span class="subst">===</span> <span class="built_in">null</span>) &#123;</span><br><span class="line">        this<span class="built_in">.</span>root <span class="subst">=</span> n;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">var</span> cur <span class="subst">=</span> this<span class="built_in">.</span>root,</span><br><span class="line">            <span class="keyword">parent</span>;</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="keyword">parent</span> <span class="subst">=</span> cur;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">data</span> <span class="subst">&lt;</span> cur<span class="built_in">.</span><span class="built_in">data</span>) &#123;</span><br><span class="line">                cur <span class="subst">=</span> cur<span class="built_in">.</span>left;</span><br><span class="line">                <span class="keyword">if</span> (cur <span class="subst">===</span> <span class="built_in">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">parent</span><span class="built_in">.</span>left <span class="subst">=</span> n;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">data</span> <span class="subst">&gt;</span> cur<span class="built_in">.</span><span class="built_in">data</span>) &#123;</span><br><span class="line">                cur <span class="subst">=</span> cur<span class="built_in">.</span>right;</span><br><span class="line">                <span class="keyword">if</span> (cur <span class="subst">===</span> <span class="built_in">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">parent</span><span class="built_in">.</span>right <span class="subst">=</span> n;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cur<span class="built_in">.</span>num <span class="subst">+=</span> <span class="number">1</span>;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -611,82 +611,82 @@
 <h3 id="先序遍历">先序遍历</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">preOrder</span><span class="params">(node)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [],</span><br><span class="line">        p = node;</span><br><span class="line">    <span class="keyword">while</span> (p !== <span class="literal">null</span> || arr.length) &#123;</span><br><span class="line">        <span class="keyword">while</span> (p !== <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">// console.log(p.data);</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; p.num; i += <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(p.data);</span><br><span class="line">            &#125;</span><br><span class="line">            arr.push(p);</span><br><span class="line">            p = p.left;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (arr.length) &#123;</span><br><span class="line">            p = arr.pop();</span><br><span class="line">            p = p.right;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="后续遍历">后续遍历</h3><p>对于任一结点P，将其入栈，然后沿其左子树一直往下搜索，直到搜索到没有左孩子的结点，此时该结点出现在栈顶，但是此时不能将其出栈并访问，因此其右孩子还为被访问。所以接下来按照相同的规则对其右子树进行相同的处理，当访问完其右孩子时，该结点又出现在栈顶，此时可以将其出栈并访问。这样就保证了正确的访问顺序。可以看出，在这个过程中，每个结点都两次出现在栈顶，只有在第二次出现在栈顶时，才能访问它。因此需要多设置一个变量标识该结点是否是第一次出现在栈顶。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">postOrder</span><span class="params">(node)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [],</span><br><span class="line">        p = node,</span><br><span class="line">        tmp;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (p !== <span class="literal">null</span> || arr.length) &#123;</span><br><span class="line">        <span class="keyword">while</span> (p !== <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">// 第一次出现在栈顶</span></span><br><span class="line">            p.first = <span class="literal">true</span>;</span><br><span class="line">            arr.push(p);</span><br><span class="line">            p = p.left;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (arr.length) &#123;</span><br><span class="line">            <span class="comment">// 使用临时变量能简化问题</span></span><br><span class="line">            tmp = arr.pop();</span><br><span class="line">            <span class="keyword">if</span> (tmp.first === <span class="literal">true</span>) &#123;</span><br><span class="line">                <span class="comment">// 第二次出现</span></span><br><span class="line">                tmp.first = <span class="literal">false</span>;</span><br><span class="line">                arr.push(tmp);</span><br><span class="line">                p = tmp.right;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// console.log(tmp.data);</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; tmp.num; i += <span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(tmp.data);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-        
-      
+
+
     </div>
 
     <div class="post-footer">
-      
+
         <div class="post-tags">
-          
+
             <a href="/tags/二叉查找树/"> #二叉查找树 </a>
-          
+
             <a href="/tags/非递归遍历/"> #非递归遍历 </a>
-          
+
         </div>
-      
 
-      
 
-      
-      
+
+
+
+
         <div class="post-eof"></div>
-      
+
     </div>
   </div>
 
 
-    
-      
+
+
 
   <div class="post post-type-normal ">
     <div class="post-header">
 
-      
-      
+
+
         <h1 class="post-title">
-          
-          
-            
+
+
+
               <a class="post-title-link" href="/2015/04/12/排序/">
                 排序
               </a>
-            
-          
+
+
         </h1>
-      
+
 
       <div class="post-meta">
         <span class="post-time">
           发表于 2015-04-12
         </span>
 
-        
+
           <span class="post-category">
             &nbsp; | &nbsp; 分类于
-            
+
               <a href="/categories/数据结构算法/">数据结构算法</a>
 
-              
-              
 
-            
+
+
+
           </span>
-        
 
-        
-          
-        
+
+
+
+
       </div>
     </div>
 
     <div class="post-body">
 
-      
-      
 
-      
-        
+
+
+
+
           <h1 id="插入排序">插入排序</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span><span class="params">(a)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> len = a.length,</span><br><span class="line">        i, j, tmp;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; len; i += <span class="number">1</span>) &#123;</span><br><span class="line">        tmp = a[i];</span><br><span class="line">        <span class="keyword">for</span> (j = i; j &gt;= <span class="number">0</span>; j -= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="comment">// tmp不能替换为a[j]，此处与一个固定值比较，</span></span><br><span class="line">            <span class="comment">// 而a[j]在循环中改变值</span></span><br><span class="line">            <span class="keyword">if</span> (a[j - <span class="number">1</span>] &gt; tmp) &#123;</span><br><span class="line">                a[j] = a[j - <span class="number">1</span>];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">// 前面都是排好序的，需直接退出循环</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        a[j] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = [<span class="number">0</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">sort(a);</span><br></pre></td></tr></table></figure>
 <h1 id="快速排序">快速排序</h1><h2 id="1-选取枢纽元">1.选取枢纽元</h2><h3 id="一种错误的方法">一种错误的方法</h3><p>通常的，没有经过充分考虑的选择是将第一个元素用作枢纽元。<br>如果输入时随机的，那么这是可以接受的，但是如果输入的是预排序的或是反序的，那么这样的枢纽元就产生一个劣质的分割，因为所有的元素都被划分都枢纽元的一边。更有甚者，这种情况可能发生在所有的递归调用中。</p>
 <h3 id="一种安全的做法">一种安全的做法</h3><p>一种安全的方针是随机选取枢纽元。但随机数生成一般是昂贵的，根本减少不了算法其余部分的平均运行时间。</p>
@@ -705,84 +705,84 @@
 <p>而代码1中，i本应该初始化为left + 1， 但由于a[++i]，使得i值其实还是以left + 1开始执行。而且++i还有一个好处，即便a[i] = a[pivot]使得循环停止，但下次循环时i值先行加1，于是循环可继续执行而不会停留在同一i值而进入死循环。</p>
 <h3 id="插入排序-1">插入排序</h3><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertionSort</span><span class="params">(a, left, right)</span> <span class="comment">&#123;</span><br><span class="line">    var i, j, tmp;</span><br><span class="line">    for (i = left + 1; i &lt;= right; i++) &#123;</span><br><span class="line">        tmp = a[i]</span><br><span class="line">        for (j = i; j &gt;= left; j -= 1) &#123;</span><br><span class="line">            if(a[j - 1] &gt; tmp)&#123;</span><br><span class="line">                a[j] = a[j - 1];</span><br><span class="line">            &#125;</span><span class="title">else</span><span class="comment">&#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title">a</span>[<span class="title">j</span>] = <span class="title">tmp</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="5-整合代码">5.整合代码</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">function <span class="built_in">swap</span>(a, x, y) &#123;</span><br><span class="line">    <span class="keyword">var</span> temp;</span><br><span class="line">    temp = a[x];</span><br><span class="line">    a[x] = a[y];</span><br><span class="line">    a[y] = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function <span class="built_in">quickSort</span>(a) &#123;</span><br><span class="line">    <span class="keyword">var</span> n = a.length;</span><br><span class="line">    <span class="type">Qsort</span>(a, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function median3(a, <span class="keyword">left</span>, <span class="keyword">right</span>) &#123;            </span><br><span class="line">    <span class="keyword">var</span> center = <span class="type">Math</span>.floor((<span class="keyword">left</span> + <span class="keyword">right</span>) / <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (a[<span class="keyword">left</span>] &gt; a[center])</span><br><span class="line">        <span class="built_in">swap</span>(a, <span class="keyword">left</span>, center);</span><br><span class="line">    <span class="keyword">if</span> (a[<span class="keyword">left</span>] &gt; a[<span class="keyword">right</span>])</span><br><span class="line">        <span class="built_in">swap</span>(a, <span class="keyword">left</span>, <span class="keyword">right</span>);</span><br><span class="line">    <span class="keyword">if</span> (a[center] &gt; a[<span class="keyword">right</span>])</span><br><span class="line">        <span class="built_in">swap</span>(a, center, <span class="keyword">right</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">swap</span>(a, center, <span class="keyword">right</span> - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> a[<span class="keyword">right</span> - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function <span class="type">Qsort</span>(a, <span class="keyword">left</span>, <span class="keyword">right</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">left</span> + <span class="number">3</span> &lt;= <span class="keyword">right</span>) &#123;</span><br><span class="line">        <span class="comment">// 枢纽元的位置为right -1</span></span><br><span class="line">        <span class="keyword">var</span> pivot = median3(a, <span class="keyword">left</span>, <span class="keyword">right</span>),</span><br><span class="line">            i = <span class="keyword">left</span>,</span><br><span class="line">            j = <span class="keyword">right</span> - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">            <span class="keyword">while</span> (a[++i] &lt; pivot) &#123;&#125;</span><br><span class="line">            <span class="keyword">while</span> (a[--j] &gt; pivot) &#123;&#125;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; j) &#123;</span><br><span class="line">                <span class="built_in">swap</span>(a, i, j);</span><br><span class="line">            &#125; <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// --j使得枢纽元的位置保持为right - 1不变</span></span><br><span class="line">        <span class="built_in">swap</span>(a, i, <span class="keyword">right</span> - <span class="number">1</span>);</span><br><span class="line">        <span class="type">Qsort</span>(a, <span class="keyword">left</span>, i - <span class="number">1</span>);</span><br><span class="line">        <span class="type">Qsort</span>(a, i + <span class="number">1</span>, <span class="keyword">right</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">insertionSort</span>(a, <span class="keyword">left</span>, <span class="keyword">right</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function <span class="built_in">insertionSort</span>(a, <span class="keyword">left</span>, <span class="keyword">right</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> i, j, tmp;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="keyword">left</span> + <span class="number">1</span>; i &lt;= <span class="keyword">right</span>; i++) &#123;</span><br><span class="line">        tmp = a[i]</span><br><span class="line">        <span class="keyword">for</span> (j = i; j &gt;= <span class="keyword">left</span>; j -= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(a[j - <span class="number">1</span>] &gt; tmp)&#123;</span><br><span class="line">                a[j] = a[j - <span class="number">1</span>];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        a[j] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = [<span class="number">8</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">7</span>, <span class="number">0</span>];</span><br><span class="line"><span class="built_in">quickSort</span>(a);</span><br><span class="line">console.log(a);</span><br></pre></td></tr></table></figure>
-        
-      
+
+
     </div>
 
     <div class="post-footer">
-      
+
         <div class="post-tags">
-          
+
             <a href="/tags/快速排序/"> #快速排序 </a>
-          
+
             <a href="/tags/排序/"> #排序 </a>
-          
+
             <a href="/tags/插入排序/"> #插入排序 </a>
-          
+
         </div>
-      
 
-      
 
-      
-      
+
+
+
+
         <div class="post-eof"></div>
-      
+
     </div>
   </div>
 
 
-    
-      
+
+
 
   <div class="post post-type-normal ">
     <div class="post-header">
 
-      
-      
+
+
         <h1 class="post-title">
-          
-          
-            
+
+
+
               <a class="post-title-link" href="/2014/11/30/计算特指度/">
                 计算特指度
               </a>
-            
-          
+
+
         </h1>
-      
+
 
       <div class="post-meta">
         <span class="post-time">
           发表于 2014-11-30
         </span>
 
-        
+
           <span class="post-category">
             &nbsp; | &nbsp; 分类于
-            
+
               <a href="/categories/CSS/">CSS</a>
 
-              
-              
 
-            
+
+
+
           </span>
-        
 
-        
-          
-        
+
+
+
+
       </div>
     </div>
 
     <div class="post-body">
 
-      
-      
 
-      
-        
+
+
+
+
           <p>总结一下怎么计算选择符的特指度。首先，有一个简单的记分规则，即对每个选择符都要按下面的<code>ICE</code>公式计算三个值：</p>
 <p><strong>I - C - E</strong></p>
 <p>ICE并非真正的三位数，只不过大多数情况下把结果看成一个三位数没有问题，三位数最大的胜出。但是，千万得知道0-1-12与0-2-0相比，仍然是0-2-0的特指度更高。</p>
@@ -826,80 +826,80 @@
 </li>
 </ol>
 
-        
-      
+
+
     </div>
 
     <div class="post-footer">
-      
+
         <div class="post-tags">
-          
+
             <a href="/tags/CSS/"> #CSS </a>
-          
+
         </div>
-      
 
-      
 
-      
-      
+
+
+
+
         <div class="post-eof"></div>
-      
+
     </div>
   </div>
 
 
-    
-      
+
+
 
   <div class="post post-type-normal ">
     <div class="post-header">
 
-      
-      
+
+
         <h1 class="post-title">
-          
-          
-            
+
+
+
               <a class="post-title-link" href="/2014/10/11/定位元素/">
                 定位元素
               </a>
-            
-          
+
+
         </h1>
-      
+
 
       <div class="post-meta">
         <span class="post-time">
           发表于 2014-10-11
         </span>
 
-        
+
           <span class="post-category">
             &nbsp; | &nbsp; 分类于
-            
+
               <a href="/categories/CSS/">CSS</a>
 
-              
-              
 
-            
+
+
+
           </span>
-        
 
-        
-          
-        
+
+
+
+
       </div>
     </div>
 
     <div class="post-body">
 
-      
-      
 
-      
-        
+
+
+
+
           <h3 id="定位的类型">定位的类型</h3><ol>
 <li><code>static</code></li>
 <li><code>relative</code></li>
@@ -937,80 +937,80 @@
 <h3 id="固定元素">固定元素</h3><p>固定元素与绝对定位很类似，只不过固定元素的包含块是视窗。固定定位时，元素会完全从文档流中去除，不会有相对于文档中任何部分的位置。</p>
 <h3 id="相对定位">相对定位</h3><p>相对定位更多的应用于为绝对定位设置定位上下文。</p>
 
-        
-      
+
+
     </div>
 
     <div class="post-footer">
-      
+
         <div class="post-tags">
-          
+
             <a href="/tags/CSS/"> #CSS </a>
-          
+
         </div>
-      
 
-      
 
-      
-      
+
+
+
+
         <div class="post-eof"></div>
-      
+
     </div>
   </div>
 
 
-    
-      
+
+
 
   <div class="post post-type-normal ">
     <div class="post-header">
 
-      
-      
+
+
         <h1 class="post-title">
-          
-          
-            
+
+
+
               <a class="post-title-link" href="/2014/10/10/浮动元素/">
                 浮动元素
               </a>
-            
-          
+
+
         </h1>
-      
+
 
       <div class="post-meta">
         <span class="post-time">
           发表于 2014-10-10
         </span>
 
-        
+
           <span class="post-category">
             &nbsp; | &nbsp; 分类于
-            
+
               <a href="/categories/CSS/">CSS</a>
 
-              
-              
 
-            
+
+
+
           </span>
-        
 
-        
-          
-        
+
+
+
+
       </div>
     </div>
 
     <div class="post-body">
 
-      
-      
 
-      
-        
+
+
+
+
           <p>正常流会忽视浮动元素和定位元素（absolute、fixed），不过浮动元素和定位元素会与其在正常流中的父元素（浮动-包含块，定位-position值为relative）有互动。</p>
 <p>正常流虽然会忽视浮动元素，但匿名文本和行内元素（包括替换和非替换）却不会，而且浮动元素的外边距也会对其产生影响。浮动元素会生成一个块级框嘛。</p>
 <ol>
@@ -1057,33 +1057,33 @@
 </ol>
 <h2 id="清除">清除</h2><p>clear工作如下，它会增加元素的上外边距，使之最后落在浮动元素的下面，这实际上会忽略为清除元素（设置了clear的元素）顶端设置的外边距宽度。也就是说，清除元素的上外边距可能会调整将元素下移足够远（使内容区在浮动元素下边界的下面）所需的任何长度。</p>
 
-        
-      
+
+
     </div>
 
     <div class="post-footer">
-      
+
         <div class="post-tags">
-          
+
             <a href="/tags/CSS/"> #CSS </a>
-          
+
         </div>
-      
 
-      
 
-      
-      
+
+
+
+
         <div class="post-eof"></div>
-      
+
     </div>
   </div>
 
 
-    
+
   </div>
 
-  
+
   <div class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
   </div>
@@ -1092,8 +1092,8 @@
         </div>
       </div>
 
-      
-  
+
+
   <div class="sidebar-toggle">
     <div class="sidebar-toggle-line-wrap">
       <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
@@ -1105,7 +1105,7 @@
   <div id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
-      
+
 
       <div class="site-overview">
         <div class="site-author motion-element">
@@ -1137,28 +1137,28 @@
 
         </div>
 
-        
+
 
         <div class="links-of-author motion-element">
-          
-            
+
+
               <span class="links-of-author-item">
               <a href="https://github.com/lizhengnacl" target="_blank">github</a>
             </span>
-            
+
               <span class="links-of-author-item">
               <a href="http://weibo.com/u/3409563520" target="_blank">weibo</a>
             </span>
-            
-          
+
+
         </div>
 
-        
-        
+
+
 
       </div>
 
-      
+
 
     </div>
   </div>
@@ -1169,8 +1169,8 @@
     <div id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">
-  
-  &copy; &nbsp;  2014 - 
+
+  &copy; &nbsp;  2014 -
   2015
   <span class="with-love">
     <i class="icon-heart"></i>
@@ -1199,10 +1199,10 @@
 
   <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
 
-  
-  
 
-  
+
+
+
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
@@ -1252,7 +1252,7 @@
   }
 </script>
 
-  
+
 
   <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
   <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
@@ -1304,10 +1304,10 @@
       $.Velocity.RunSequence([
         { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
         { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
-        
+
         { e: $('.logo-line-before i'), p: { translateX: "100%" }, o: { duration: 500, sequenceQueue: false } },
         { e: $('.logo-line-after i'), p: { translateX: "-100%" }, o: { duration: 500, sequenceQueue: false } },
-        
+
         { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
       ]);
       $('.menu-item').velocity('transition.slideDownIn', {display: null});
@@ -1388,19 +1388,19 @@
 
 
 
-  
-
-  
-
-  
-  
-  
-
-  
 
 
 
 
-  
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
