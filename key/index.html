@@ -201,9 +201,9 @@
             <td><input id="hmac" type="password" placeholder="keyword"></td>
         </tr>
         <tr>
-            <td><span>Length<br><code id="length-show">18</code></span></td>
+            <td><span>Length<br><code id="length-show">15</code></span></td>
             <td>
-                <input id="length" type="range" max="40" min="1" step="1" value="18" oninput="range()" onchange="range()">
+                <input id="length" type="range" max="40" min="1" step="1" value="15" oninput="range()" onchange="range()">
             </td>
         </tr>
         <tr>
@@ -230,7 +230,7 @@
         var content = $('content');
 
         function getLen(){
-            return Math.max(parseInt(length.value) || 18, 4);
+            return Math.max(parseInt(length.value) || 15, 4);
         }
 
         function get_(res, value){
