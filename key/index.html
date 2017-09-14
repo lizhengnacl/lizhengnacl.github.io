@@ -1,4 +1,5 @@
-<html><head>
+<html>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -49,13 +50,12 @@
         }
 
         html {
-            font-family:
-                    HelveticaNeue-Light,
-                    'Helvetica Neue Light',
-                    'Helvetica Neue',
-                    Helvetica,
-                    Arial,
-                    sans-serif; /* 1 */
+            font-family: HelveticaNeue-Light,
+            'Helvetica Neue Light',
+            'Helvetica Neue',
+            Helvetica,
+            Arial,
+            sans-serif; /* 1 */
             -ms-text-size-adjust: 100%; /* 2 */
             -webkit-text-size-adjust: 100%; /* 2 */
         }
@@ -117,6 +117,7 @@
             max-width: 402px;
             border: none;
         }
+
         input[type="password"], select {
             vertical-align: baseline;
             text-transform: none;
@@ -135,34 +136,41 @@
             width: 200px;
             height: 30px;
         }
+
         input[type="range"] {
             width: 200px;
         }
+
         table {
             width: 100%;
         }
+
         .main {
             margin: 0 auto;
             max-width: 400px;
             padding: 0 20px;
         }
+
         td {
             padding: 10px 0;
             font-size: 1.4rem;
             line-height: 1.4em;
         }
+
         tr td:first-child {
             text-align: right;
             padding-right: 20px;
             padding-left: 20px;
         }
+
         code {
             background: #ccc;
             padding: 1px 2px;
             border-radius: 3px;
         }
+
         #result {
-            text-align: center!important;
+            text-align: center !important;
             display: block;
             width: 100%;
             font-size: 3rem;
@@ -172,13 +180,20 @@
             word-break: break-all;
             line-height: 1.4em;
         }
+
+        #qrcode img{
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
     </style>
 </head>
 <body cz-shortcut-listen="true">
 <div class="main">
     <h1>Key Generator</h1>
     <table cellspacing="0" border="0">
-        <tbody><tr>
+        <tbody>
+        <tr>
             <td width="60"><span>Type</span></td>
             <td>
                 <select id="type">
@@ -203,7 +218,8 @@
         <tr>
             <td><span>Length<br><code id="length-show">15</code></span></td>
             <td>
-                <input id="length" type="range" max="40" min="1" step="1" value="15" oninput="range()" onchange="range()">
+                <input id="length" type="range" max="40" min="1" step="1" value="15" oninput="range()"
+                       onchange="range()">
             </td>
         </tr>
         <tr>
@@ -213,31 +229,39 @@
         </tr>
         <tr>
             <td colspan="2">
-                <button onclick="gen()">Generate</button>
+                <button onclick="gen()" id="button">Generate</button>
             </td>
         </tr>
-        </tbody></table>
+        <tr>
+            <td colspan="2">
+                <div id="qrcode"></div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 <script src="//cdn.bootcss.com/jshashes/1.0.7/hashes.min.js"></script>
+<script src="//s3.meituan.net/v1/mss_78d1aa5426c546bfa023ca0cacfa2cd1/cdn/neixin/video/qrcode.min.js"></script>
 <script type="text/javascript">
-    (function(){
-        function $(id){
+    (function() {
+        function $(id) {
             return document.getElementById(id);
         }
+
         var type = $('type');
         var length = $('length');
         var hmac = $('hmac');
         var content = $('content');
 
-        function getLen(){
+        function getLen() {
             return Math.max(parseInt(length.value) || 15, 4);
         }
 
-        function get_(res, value){
+        function get_(res, value) {
             var reg = /[0-9]/g,
-                    count = 0,
-                    arr = [];
-            while(arr = reg.exec(res)){
+                count = 0,
+                arr = [];
+            while(arr = reg.exec(res)) {
                 count += Number(arr[0]);
             }
             count %= value;
@@ -245,15 +269,16 @@
             res.splice(count, 1, '_');
             return res.join('');
         }
-        window.gen = function(){
+
+        window.gen = function() {
             var t = type.value;
-            if(typeof Hashes[t] === 'function'){
+            if(typeof Hashes[t] === 'function') {
                 var encrpty = new Hashes[t];
                 var str = (content.value || '').trim().toLowerCase();
-                if(str){
+                if(str) {
                     var value = getLen();
                     var key = (hmac.value || '').trim();
-                    if(key){
+                    if(key) {
                         var pwd = encrpty.b64_hmac(key, str);
                         var res = pwd.replace(/\W/g, '').substring(0, value);
                         $('result').innerHTML = get_(res, value);
@@ -273,27 +298,54 @@
                 alert('Invalid type');
             }
         };
-        window.range = function(){
+        window.range = function() {
             $('length-show').innerHTML = getLen();
         }
         try {
             var lastType = localStorage.getItem('_1pwd_type_');
-            if(lastType){
+            if(lastType) {
                 var options = document.getElementsByTagName('option');
-                for(var i = 0, len = options.length; i < len; i++){
+                for(var i = 0, len = options.length; i < len; i++) {
                     var opt = options[i];
-                    if(opt.value === lastType){
+                    if(opt.value === lastType) {
                         opt.setAttribute('selected', 'selected');
                     }
                 }
             }
             var lastLength = localStorage.getItem('_1pwd_leng_');
-            if(lastLength){
+            if(lastLength) {
                 length.value = lastLength;
                 range();
             }
-        } catch(e) {}
+        } catch(e) {
+        }
     })();
     // 鸣谢 https://www.zhihu.com/people/fouber
+
+    (function() {
+        // 二维码
+        var mountPoint = document.querySelector('#qrcode');
+        var password = document.querySelector("#result");
+        var button = document.querySelector('#button');
+
+        var qrcode = new QRCode(mountPoint, {
+            width: 300,
+            height: 300
+        });
+
+        function makeCode() {
+            if(!password.innerText) {
+                return;
+            }
+            qrcode.makeCode(password.innerText);
+        }
+
+        makeCode();
+
+        button.addEventListener('click', function() {
+            makeCode();
+        });
+    })();
 </script>
-</body></html>
+</body>
+</html>
