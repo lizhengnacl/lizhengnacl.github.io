@@ -337,7 +337,7 @@
             if(!password.innerText) {
                 return;
             }
-            qrcode.makeCode(password.innerText);
+            qrcode.makeCode(`http://43.241.232.102:3000/?key=${password.innerText}`);
         }
 
         makeCode();
