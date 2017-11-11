@@ -337,7 +337,7 @@
             if(!password.innerText) {
                 return;
             }
-            qrcode.makeCode(`http://mos.liz.wiki/?key=${password.innerText}`);
+            qrcode.makeCode(`http://mos.liz.wiki/key?key=${password.innerText}`);
         }
 
         makeCode();
