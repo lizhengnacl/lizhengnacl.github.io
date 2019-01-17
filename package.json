@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "docsify start . -c ssr.config.js",
-    "deploy": "now -p"
+    "deploy": "now -p",
+    "serve": "docsify serve ."
   },
   "repository": {
     "type": "git",
