@@ -1,0 +1,25 @@
+{
+  "name": "lizhengnacl.github.io",
+  "version": "1.0.0",
+  "description": "HI",
+  "main": "index.js",
+  "scripts": {
+    "start": "docsify start . -c ssr.config.js",
+    "deploy": "now -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lizhengnacl/lizhengnacl.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lizhengnacl/lizhengnacl.github.io/issues"
+  },
+  "homepage": "https://github.com/lizhengnacl/lizhengnacl.github.io#readme",
+  "devDependencies": {
+    "docsify-cli": "^4.3.0",
+    "now": "^13.1.2"
+  }
+}
